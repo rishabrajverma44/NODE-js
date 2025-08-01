@@ -1,16 +1,18 @@
-import js from "@eslint/js";
-import globals from "globals";
-import pluginReact from "eslint-plugin-react";
-import { defineConfig } from "eslint/config";
 import hub from "@mindfiredigital/eslint-plugin-hub";
+import globals from "globals";
 
-export default defineConfig([
+export default [
   hub.configs["flat/mern"],
   {
-    files: ["**/*.{js,mjs,cjs,jsx}"],
-    plugins: { js },
-    extends: ["js/recommended"],
-    languageOptions: { globals: globals.browser },
+    languageOptions: {
+      globals: globals.builtin,
+      parserOptions: {
+        ecmaVersion: 2022,
+        sourceType: "module",
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
   },
-  pluginReact.configs.flat.recommended,
-]);
+];
