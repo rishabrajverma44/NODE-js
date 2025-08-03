@@ -15,8 +15,8 @@ export class formService {
   //get all forms
   async getForms() {
     try {
-      const posts = await Form.find({});
-      return posts;
+      const allForms = await Form.find({});
+      return allForms;
     } catch (error) {
       console.log(error);
     }
@@ -25,11 +25,11 @@ export class formService {
   //get a single form
   async getForm(id: string) {
     try {
-      const post = await Form.findOne({ formID: id });
-      if (!post) {
-        return "post not available";
+      const form = await Form.findOne({ formID: id });
+      if (!form) {
+        return "form not available";
       }
-      return post;
+      return form;
     } catch (error) {
       console.log(error);
     }
@@ -38,13 +38,13 @@ export class formService {
   //update a form
   async updateForm(id: string, data: any) {
     try {
-      const postz = await Form.findByIdAndUpdate({ formID: id }, data, {
+      const forms = await Form.findByIdAndUpdate({ formID: id }, data, {
         new: true,
       });
-      if (!postz) {
-        return "post not available";
+      if (!forms) {
+        return "forms not available";
       }
-      return postz;
+      return forms;
     } catch (error) {
       console.log(error);
     }
@@ -52,9 +52,9 @@ export class formService {
 
   async deleteForm(id: string) {
     try {
-      const post = await Form.findByIdAndDelete(id);
-      if (!post) {
-        return "post not available";
+      const form = await Form.findByIdAndDelete(id);
+      if (!form) {
+        return "form not available";
       }
     } catch (error) {
       console.log(error);
