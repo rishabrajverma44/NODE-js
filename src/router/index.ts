@@ -1,10 +1,12 @@
 import express from "express";
-import { PostController } from "../controller/PostController";
+import { FormCtr } from "../controller/FormCtr";
 
 //initiating the router
 export const router = express.Router();
-router.post("/", PostController.addpost);
-router.get("/", PostController.getPosts);
-router.get("/:id", PostController.getAPost);
-router.put("/:id", PostController.updatePost);
-router.delete("/:id", PostController.deletePost);
+router.post("/", FormCtr.addForm);
+router.get("/", FormCtr.getForms);
+router.get("/:id", FormCtr.getAForm);
+router.put("/:id", FormCtr.updateForm);
+router.delete("/:id", FormCtr.deleteForm);
+
+//user login

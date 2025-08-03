@@ -1,31 +1,31 @@
-import { PostModel } from "../models/Formschema";
+import { Form } from "../models/Form";
 
-export class postService {
-  //create a post
-  async createPost(data: any) {
+export class formService {
+  //create a form
+  async createForm(data: any) {
     try {
       const dataWithId = { ...data, formID: Math.random() };
-      await PostModel.create(dataWithId);
+      await Form.create(dataWithId);
       return data;
     } catch (error) {
       console.log(error);
     }
   }
 
-  //get all posts
-  async getPosts() {
+  //get all forms
+  async getForms() {
     try {
-      const posts = await PostModel.find({});
+      const posts = await Form.find({});
       return posts;
     } catch (error) {
       console.log(error);
     }
   }
 
-  //get a single post
-  async getPost(id: string) {
+  //get a single form
+  async getForm(id: string) {
     try {
-      const post = await PostModel.findOne({ formID: id });
+      const post = await Form.findOne({ formID: id });
       if (!post) {
         return "post not available";
       }
@@ -35,10 +35,10 @@ export class postService {
     }
   }
 
-  //update a post
-  async updatePost(id: string, data: any) {
+  //update a form
+  async updateForm(id: string, data: any) {
     try {
-      const postz = await PostModel.findByIdAndUpdate({ formID: id }, data, {
+      const postz = await Form.findByIdAndUpdate({ formID: id }, data, {
         new: true,
       });
       if (!postz) {
@@ -50,9 +50,9 @@ export class postService {
     }
   }
 
-  async deletePost(id: string) {
+  async deleteForm(id: string) {
     try {
-      const post = await PostModel.findByIdAndDelete(id);
+      const post = await Form.findByIdAndDelete(id);
       if (!post) {
         return "post not available";
       }
@@ -62,4 +62,4 @@ export class postService {
   }
 }
 
-export const postServices = new postService();
+export const FormServices = new formService();

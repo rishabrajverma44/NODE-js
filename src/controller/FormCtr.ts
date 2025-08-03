@@ -1,10 +1,9 @@
-//import modules
 import { Request, Response } from "express";
-import { postServices } from "../services/postServices";
 import { SchemaValidation } from "../models/SchemaValidation";
+import { FormServices } from "../services/FormServices";
 
-class postController {
-  addpost = async (req: Request, res: Response) => {
+class formController {
+  addForm = async (req: Request, res: Response) => {
     //data to be saved in database
     const data = {
       company: req.body.company,
@@ -22,39 +21,39 @@ class postController {
       res.send(error.message);
     } else {
       //call the create post function in the service and pass the data from the request
-      const post = await postServices.createPost(value);
+      const post = await FormServices.createForm(value);
       res.status(201).send(post);
     }
   };
 
-  //get all posts
-  getPosts = async (req: Request, res: Response) => {
-    const posts = await postServices.getPosts();
+  //get all forms
+  getForms = async (req: Request, res: Response) => {
+    const posts = await FormServices.getForms();
     res.send(posts);
   };
 
-  //get a single post
-  getAPost = async (req: Request, res: Response) => {
+  //get a single form
+  getAForm = async (req: Request, res: Response) => {
     //get id from the parameter
     const id = req.params.id;
-    const post = await postServices.getPost(id);
+    const post = await FormServices.getForm(id);
     res.send(post);
   };
 
-  //update post
-  updatePost = async (req: Request, res: Response) => {
+  //update form
+  updateForm = async (req: Request, res: Response) => {
     const id = req.params.id;
-    const post = await postServices.updatePost(id, req.body);
+    const post = await FormServices.updateForm(id, req.body);
     res.send(post);
   };
 
-  //delete a post
-  deletePost = async (req: Request, res: Response) => {
+  //delete a form
+  deleteForm = async (req: Request, res: Response) => {
     const id = req.params.id;
-    await postServices.deletePost(id);
-    res.send("post deleted");
+    await FormServices.deleteForm(id);
+    res.send("form deleted");
   };
 }
 
-//export class
-export const PostController = new postController();
+//export controller
+export const FormCtr = new formController();

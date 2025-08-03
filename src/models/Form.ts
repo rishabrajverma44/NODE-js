@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
 //creating an interface
-interface IPosts {
+interface IForms {
   formID: string;
   company: string;
   role: string;
@@ -12,8 +12,8 @@ interface IPosts {
   notes: string;
 }
 
-//Postschema
-const Formschema = new Schema<IPosts>({
+//formschema
+const Formschema = new Schema<IForms>({
   formID: {
     type: String,
     required: true,
@@ -50,4 +50,4 @@ const Formschema = new Schema<IPosts>({
 });
 
 //creating a model
-export const PostModel = model<IPosts>("Forms", Formschema);
+export const Form = model<IForms>("Forms", Formschema);
