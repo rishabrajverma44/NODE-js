@@ -1,7 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import "./config/connectDB.config";
-import { router } from "./router";
+import { formRoute } from "./router/formRouter";
+import { userRouter } from "./router/userRouter";
 
 const app = express();
 dotenv.config();
@@ -13,7 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //routes
-app.use("/api/v1/posts", router);
+app.use("/form", formRoute);
+app.use("/user", userRouter);
 
 app.get("/", (req, res) => {
   res.send("hello form server");

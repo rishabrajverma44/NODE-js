@@ -1,16 +1,5 @@
 import { Schema, model } from "mongoose";
-
-//creating an interface
-interface IForms {
-  formID: string;
-  company: string;
-  role: string;
-  jobType: string;
-  location: string;
-  date: string;
-  status: string;
-  notes: string;
-}
+import { IForms } from "../types";
 
 //formschema
 const Formschema = new Schema<IForms>({

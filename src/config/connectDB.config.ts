@@ -14,7 +14,6 @@ const options = {
 };
 
 //db connection
-console.log(`connecting to....  ${connectionString}`);
 const connectDB = mongoose
   .connect(connectionString, options)
   .then((res) => {
