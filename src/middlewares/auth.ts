@@ -2,21 +2,19 @@ import { Request, Response, NextFunction } from "express";
 import { getUser } from "../controller/auth";
 
 export async function restrictToLoggedinUserOnly(
-  req: Request & { user: any },
+  req: Request,
   res: Response,
   next: NextFunction
 ) {
-  const userID = req?.cookies?.job_app;
-  if (!userID) {
+  const userJwt = req?.cookies?.jobApp_jwt;
+  if (!userJwt) {
     res.status(404).send("cookies not found !");
     return;
   }
-  const user = getUser(userID);
+  const user = getUser(userJwt);
   if (!user) {
     res.status(404).send("login user first !");
     return;
   }
-
-  req.user = user;
   next();
 }

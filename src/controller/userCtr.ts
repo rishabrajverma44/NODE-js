@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { userServices } from "../services/Users";
-import { v4 as uuidv4 } from "uuid";
-import { getUser, setUser } from "./auth";
+import { setUser } from "./auth";
 
 import {
   UserLoginValidation,
@@ -36,11 +35,10 @@ class user {
     if (user === null) {
       return res.status(404).send("User not found !");
     } else {
-      //handel session here
-      const sessonID = uuidv4();
-      setUser(sessonID, user);
-      res.cookie("job_app", sessonID);
-      res.status(200).send("login with cookies !");
+      //handel jwt token validation here
+      const token = setUser({ userEmail, password });
+      res.cookie("jobApp_jwt", token);
+      res.status(200).send("save token in cookies !");
     }
   };
 }
