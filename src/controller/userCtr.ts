@@ -1,8 +1,10 @@
 import { Request, Response } from "express";
 import { userServices } from "../services/Users";
 import { setUser } from "./auth";
+import bcrypt from "bcrypt";
 
 import {
+  UserChangePassword,
   UserLoginValidation,
   UserRegistrationValidation,
 } from "../Validation/UserRegistration";
@@ -28,17 +30,31 @@ class user {
     const { error, value } = UserLoginValidation.validate(data);
     if (error) res.send(error.message);
     const { userEmail, password } = req.body;
+
     const user = await Userschema.findOne({
       userEmail: userEmail,
-      password: password,
     });
-    if (user === null) {
-      return res.status(404).send("User not found !");
-    } else {
-      //handel jwt token validation here
+    if (user !== null) {
+      //check hased password
+      const match = await bcrypt.compare(password, user.password.toString());
+      if (!match) return res.status(404).send("Password not matched !");
+      //handel jwt token here
       const token = setUser({ userEmail, password });
       res.cookie("jobApp_jwt", token);
       res.status(200).send("save token in cookies !");
+    } else if (user === null) {
+      return res.status(404).send("User not found !");
+    }
+  };
+  userChangePassword = async (req: Request, res: Response) => {
+    const data = req.body;
+    const { value, error } = UserChangePassword.validate(data);
+    const user = await Userschema.findOne({ userEmail: req.body.userEmail });
+    if (user) {
+      console.log(user);
+      res.status(200).send(user);
+    } else {
+      res.status(404).send("Email not found !");
     }
   };
 }

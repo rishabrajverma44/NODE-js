@@ -7,7 +7,7 @@
     "lint": "eslint .",
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "nodemon --watch src --exec ts-node src/index.js"
+    "dev": "nodemon --watch src --exec ts-node src/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +15,7 @@
   "devDependencies": {
     "@eslint/js": "^9.32.0",
     "@mindfiredigital/eslint-plugin-hub": "^2.2.0",
+    "@types/bcrypt": "^6.0.0",
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.1.0",
@@ -26,6 +27,7 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "body-parser": "^2.2.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.1",
