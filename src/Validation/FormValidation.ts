@@ -1,7 +1,7 @@
 import Joi from "joi";
 
-//validation schema
-export const SchemaValidation = Joi.object({
+//validation schema for form
+export const FormValidation = Joi.object({
   company: Joi.string().required(),
   role: Joi.string().required(),
   jobType: Joi.string().required(),

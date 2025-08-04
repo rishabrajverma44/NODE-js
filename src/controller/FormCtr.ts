@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { SchemaValidation } from "../models/SchemaValidation";
+import { FormValidation } from "../Validation/FormValidation";
 import { FormServices } from "../services/FormServices";
 
 class formController {
@@ -15,7 +15,7 @@ class formController {
       notes: req.body.notes,
     };
     //validating the request
-    const { error, value } = SchemaValidation.validate(data);
+    const { error, value } = FormValidation.validate(data);
 
     if (error) {
       res.send(error.message);

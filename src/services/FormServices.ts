@@ -1,8 +1,9 @@
 import { Form } from "../models/Form";
+import { IForms } from "../types";
 
-export class formService {
+class formService {
   //create a form
-  async createForm(data: any) {
+  async createForm(data: IForms) {
     try {
       const dataWithId = { ...data, formID: Math.random() };
       await Form.create(dataWithId);
@@ -36,7 +37,7 @@ export class formService {
   }
 
   //update a form
-  async updateForm(id: string, data: any) {
+  async updateForm(id: string, data: IForms) {
     try {
       const forms = await Form.findByIdAndUpdate({ formID: id }, data, {
         new: true,
