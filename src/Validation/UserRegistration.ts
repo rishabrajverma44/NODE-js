@@ -10,3 +10,9 @@ export const UserLoginValidation = Joi.object({
   userEmail: Joi.string().required(),
   password: Joi.string().required(),
 });
+
+export const UserChangePassword = Joi.object({
+  userEmail: Joi.string().required(),
+  password: Joi.string().required(),
+  confirmPassord: Joi.any().valid(Joi.ref("password")).required(),
+});
