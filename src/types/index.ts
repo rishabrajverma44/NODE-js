@@ -9,9 +9,14 @@ export interface IForms {
   status: string;
   notes: string;
 }
-//user
+//user registration
 export interface IUser {
   userName: string;
   email: string;
+  password: string;
+}
+//user login
+export interface IUserLogin {
+  userEmail: string;
   password: string;
 }

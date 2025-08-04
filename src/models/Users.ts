@@ -2,7 +2,7 @@ import { model, Schema } from "mongoose";
 
 interface userSchema {
   userName: String;
-  email: String;
+  userEmail: String;
   password: String;
 }
 
@@ -12,7 +12,7 @@ const userSchema = new Schema<userSchema>(
       type: String,
       require: true,
     },
-    email: {
+    userEmail: {
       type: String,
       required: true,
       unique: true,

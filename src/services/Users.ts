@@ -1,9 +1,14 @@
-import { IUser } from "../types";
+import { Userschema } from "../models/Users";
+import { IUser, IUserLogin } from "../types";
 
 class users {
   async createUser(data: IUser) {
     try {
-    } catch (error) {}
+      await Userschema.create(data);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 
