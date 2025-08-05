@@ -6,6 +6,7 @@ import { userRouter } from "./router/userRouter";
 import { restrictToLoggedinUserOnly } from "./middlewares/auth";
 import cookieParser from "cookie-parser";
 import authRoleBased from "./middlewares/authRoleBased";
+import { jobSeekerRoute } from "./router/jobSeeker";
 
 const app = express();
 dotenv.config();
@@ -19,12 +20,18 @@ app.use(cookieParser());
 
 //routes
 app.use(
-  "/form",
+  "/company",
   restrictToLoggedinUserOnly,
-  authRoleBased("employer"),
+  authRoleBased("company"),
   formRoute
 );
 app.use("/user", userRouter);
+app.use(
+  "/job_seeker",
+  restrictToLoggedinUserOnly,
+  authRoleBased("job_seeker"),
+  jobSeekerRoute
+);
 
 app.get("/", (req, res) => {
   res.send("hello form server");

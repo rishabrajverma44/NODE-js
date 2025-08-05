@@ -1,8 +1,7 @@
 //creating an interface
 export interface IForms {
   formID: string;
-  userID: String;
-  company: string;
+  companyID: String;
   role: string;
   jobType: string;
   location: string;
@@ -27,4 +26,11 @@ export interface IUser {
 export interface IUserLogin {
   userEmail: string;
   password: string;
+}
+//Applied forms
+export interface IApplied {
+  formID: string;
+  userID: String;
+  companyID: String;
+  formStatus: String;
 }

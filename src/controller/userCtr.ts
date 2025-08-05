@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { userServices } from "../services/Users";
-import { setUserToken } from "../services/authGeneral";
+import { generateToken } from "../services/authGeneral";
 import {
   UserChangePassword,
   UserLoginValidation,
@@ -36,8 +36,8 @@ class user {
     );
     if (checkPassword) {
       //add jwt token here
-      const token = setUserToken({ userEmail, password });
-      res.cookie("jobApp_jwt", token);
+      const token = generateToken({ userEmail, password });
+      res.header("auth_token", "Breare " + token);
       res.status(200).send("save token in cookies !");
     } else {
       return res.status(404).send("Wrong credentials !");
