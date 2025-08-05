@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { getUser } from "../controller/auth";
+import { getUser } from "../services/authGeneral";
 
 export async function restrictToLoggedinUserOnly(
   req: Request,

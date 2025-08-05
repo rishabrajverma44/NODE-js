@@ -1,13 +1,13 @@
 import { model, Schema } from "mongoose";
+import { IUser } from "../types";
 
-interface userSchema {
-  userName: String;
-  userEmail: String;
-  password: String;
-}
-
-const userSchema = new Schema<userSchema>(
+const userSchema = new Schema<IUser>(
   {
+    userID: {
+      type: String,
+      require: true,
+      unique: true,
+    },
     userName: {
       type: String,
       require: true,
@@ -16,8 +16,13 @@ const userSchema = new Schema<userSchema>(
       type: String,
       required: true,
       unique: true,
+      index: true,
     },
     password: {
+      type: String,
+      required: true,
+    },
+    role: {
       type: String,
       required: true,
     },
@@ -25,4 +30,4 @@ const userSchema = new Schema<userSchema>(
   { timestamps: true }
 );
 
-export const Userschema = model<userSchema>("Users", userSchema);
+export const Userschema = model<IUser>("Users", userSchema);

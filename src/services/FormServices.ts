@@ -1,11 +1,12 @@
 import { Form } from "../models/Form";
 import { IForms } from "../types";
+import { generateCustomId } from "../utils/randomId";
 
 class formService {
   //create a form
   async createForm(data: IForms) {
     try {
-      const dataWithId = { ...data, formID: Math.random() };
+      const dataWithId = { ...data, formID: generateCustomId() };
       await Form.create(dataWithId);
       return data;
     } catch (error) {
@@ -16,7 +17,7 @@ class formService {
   //get all forms
   async getForms() {
     try {
-      const allForms = await Form.find({});
+      const allForms = await Form.find({}, { applicants: 0, _id: 0 });
       return allForms;
     } catch (error) {
       console.log(error);
@@ -26,7 +27,10 @@ class formService {
   //get a single form
   async getForm(id: string) {
     try {
-      const form = await Form.findOne({ formID: id });
+      const form = await Form.findOne(
+        { formID: id },
+        { applicants: 0, _id: 0 }
+      );
       if (!form) {
         return "form not available";
       }
@@ -53,7 +57,7 @@ class formService {
 
   async deleteForm(id: string) {
     try {
-      const form = await Form.findByIdAndDelete(id);
+      const form = await Form.deleteOne({ formID: id });
       if (!form) {
         return "form not available";
       }

@@ -2,6 +2,7 @@ import Joi from "joi";
 
 //validation schema for form
 export const FormValidation = Joi.object({
+  userID: Joi.string().required(),
   company: Joi.string().required(),
   role: Joi.string().required(),
   jobType: Joi.string().required(),

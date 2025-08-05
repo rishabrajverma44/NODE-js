@@ -5,6 +5,7 @@ import { formRoute } from "./router/formRouter";
 import { userRouter } from "./router/userRouter";
 import { restrictToLoggedinUserOnly } from "./middlewares/auth";
 import cookieParser from "cookie-parser";
+import authRoleBased from "./middlewares/authRoleBased";
 
 const app = express();
 dotenv.config();
@@ -17,7 +18,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 //routes
-app.use("/form", restrictToLoggedinUserOnly, formRoute);
+app.use(
+  "/form",
+  restrictToLoggedinUserOnly,
+  authRoleBased("employer"),
+  formRoute
+);
 app.use("/user", userRouter);
 
 app.get("/", (req, res) => {

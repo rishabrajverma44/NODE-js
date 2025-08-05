@@ -4,18 +4,8 @@ import { FormServices } from "../services/FormServices";
 
 class formController {
   addForm = async (req: Request, res: Response) => {
-    //data to be saved in database
-    const data = {
-      company: req.body.company,
-      role: req.body.role,
-      jobType: req.body.jobType,
-      location: req.body.location,
-      date: req.body.date,
-      status: req.body.status,
-      notes: req.body.notes,
-    };
     //validating the request
-    const { error, value } = FormValidation.validate(data);
+    const { error, value } = FormValidation.validate(req.body);
 
     if (error) {
       res.send(error.message);
@@ -29,6 +19,7 @@ class formController {
   //get all forms
   getForms = async (req: Request, res: Response) => {
     const forms = await FormServices.getForms();
+
     res.send(forms);
   };
 
