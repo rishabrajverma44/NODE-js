@@ -30,11 +30,10 @@ class user {
     if (error) res.send(error.message);
     const { userEmail, password } = req.body;
 
-    // const checkPassword = await userServices.checkSigninPassword(
-    //   userEmail,
-    //   password
-    // );
-    const checkPassword = true;
+    const checkPassword = await userServices.checkSigninPassword(
+      userEmail,
+      password
+    );
     if (checkPassword) {
       //add jwt token here
       const token = generateToken({ userEmail, password });

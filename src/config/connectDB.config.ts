@@ -14,15 +14,18 @@ const options = {
 };
 
 //db connection
-const connectDB = mongoose
-  .connect(connectionString, options)
-  .then((res) => {
-    if (res) {
-      console.log(`Database connection successfully`);
-    }
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+const connectDB = async () => {
+  await mongoose
+    .connect(connectionString, options)
+    .then((res) => {
+      if (res) {
+        console.log(`Database connection successfully`);
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
+  return mongoose;
+};
 export default connectDB;
