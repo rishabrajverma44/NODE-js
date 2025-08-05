@@ -6,9 +6,10 @@ const secret = process.env.JWT_SECRETE;
 
 function authRoleBased(...allowedRoles: any) {
   return async (req: Request, res: Response, next: NextFunction) => {
-    const token = req?.cookies?.jobApp_jwt;
+    var userToken = req?.headers["authorization"]?.toString();
+    const token = userToken && userToken.split(" ")[1];
     try {
-      if (secret) {
+      if (secret && token !== undefined) {
         const userDetails = jwt.verify(token, secret);
         const userEmail = await JSON.parse(JSON.stringify(userDetails))
           .userEmail;

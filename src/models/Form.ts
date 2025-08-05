@@ -8,14 +8,11 @@ const Formschema = new Schema<IForms>(
       type: String,
       required: true,
     },
-    userID: {
+    companyID: {
       type: String,
       required: true,
     },
-    company: {
-      type: String,
-      required: true,
-    },
+
     role: {
       type: String,
       required: true,

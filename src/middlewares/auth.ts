@@ -1,19 +1,22 @@
 import { Request, Response, NextFunction } from "express";
-import { getUser } from "../services/authGeneral";
+import { verifyTokenAndGetUser } from "../services/authGeneral";
 
 export async function restrictToLoggedinUserOnly(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  const userJwt = req?.cookies?.jobApp_jwt;
-  if (!userJwt) {
-    res.status(404).send("cookies not found !");
+  //const userJwt = req?.cookies?.jobApp_jwt;
+
+  var userToken = req?.headers["authorization"]?.toString();
+  const token = userToken && userToken.split(" ")[1];
+  if (!token) {
+    res.status(404).send("token not found !");
     return;
   }
-  const user = getUser(userJwt);
+  const user = verifyTokenAndGetUser(token);
   if (!user) {
-    res.status(404).send("login user first !");
+    res.status(404).send("Invalid token, please login!");
     return;
   }
   next();

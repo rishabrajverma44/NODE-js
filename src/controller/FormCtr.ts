@@ -5,8 +5,11 @@ import { FormServices } from "../services/FormServices";
 class formController {
   addForm = async (req: Request, res: Response) => {
     //validating the request
-    const { error, value } = FormValidation.validate(req.body);
-
+    const token = req?.cookies?.jobApp_jwt;
+    if (!token) res.status(404).send("Token not found in cookies");
+    const userId = await FormServices.getUserId(token);
+    const formData = { ...req.body, companyID: userId };
+    const { error, value } = FormValidation.validate(formData);
     if (error) {
       res.send(error.message);
     } else {
@@ -19,7 +22,6 @@ class formController {
   //get all forms
   getForms = async (req: Request, res: Response) => {
     const forms = await FormServices.getForms();
-
     res.send(forms);
   };
 

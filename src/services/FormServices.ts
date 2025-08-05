@@ -1,6 +1,9 @@
 import { Form } from "../models/Form";
+import { Userschema } from "../models/Users";
 import { IForms } from "../types";
 import { generateCustomId } from "../utils/randomId";
+import jwt from "jsonwebtoken";
+const secret = process.env.JWT_SECRETE;
 
 class formService {
   //create a form
@@ -63,6 +66,25 @@ class formService {
       }
     } catch (error) {
       console.log(error);
+    }
+  }
+  //get user id
+  async getUserId(token: string) {
+    if (secret) {
+      const userDetails = jwt.verify(token, secret);
+      const userEmail = await JSON.parse(JSON.stringify(userDetails)).userEmail;
+
+      try {
+        const userData = await Userschema.findOne(
+          {
+            userEmail: userEmail,
+          },
+          { userID: 1 }
+        );
+        if (userData) return userData.userID;
+      } catch (error) {
+        console.log(`email not found ${error}`);
+      }
     }
   }
 }
