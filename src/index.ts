@@ -1,18 +1,18 @@
 import express from "express";
 import dotenv from "dotenv";
-import "./config/connectDB.config";
 import { formRoute } from "./router/formRouter";
 import { userRouter } from "./router/userRouter";
 import { restrictToLoggedinUserOnly } from "./middlewares/auth";
 import cookieParser from "cookie-parser";
 import authRoleBased from "./middlewares/authRoleBased";
 import { jobSeekerRoute } from "./router/jobSeeker";
+import connectDB from "./config/connectDB.config";
 
 const app = express();
 dotenv.config();
 
 const port = process.env.PORT;
-
+connectDB();
 // Middleware to parse JSON and URL-encoded bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
