@@ -18,9 +18,9 @@ class user {
     const email = await userServices.checkEmail(req.body.userEmail);
     if (!email) {
       await userServices.createUser(value);
-      res.status(201).send("user created successfully !");
+      res.status(200).send("user created successfully !");
     } else {
-      res.status(409).send("Email allready exists !");
+      res.status(201).send("Email allready exists !");
     }
   };
   userLogin = async (req: Request, res: Response) => {
@@ -29,7 +29,6 @@ class user {
     const { error, value } = UserLoginValidation.validate(data);
     if (error) res.send(error.message);
     const { userEmail, password } = req.body;
-
     const checkPassword = await userServices.checkSigninPassword(
       userEmail,
       password
@@ -37,8 +36,8 @@ class user {
     if (checkPassword) {
       //add jwt token here
       const token = generateToken({ userEmail, password });
-      res.header("auth_token", "Breare " + token);
-      res.status(200).send("save token in cookies !");
+      res.header("auth_token", "bearer " + token);
+      res.status(200).json({ bearer: token });
     } else {
       return res.status(404).send("Wrong credentials !");
     }
@@ -48,7 +47,6 @@ class user {
     const { value, error } = UserChangePassword.validate(data);
     const user = await Userschema.findOne({ userEmail: req.body.userEmail });
     if (user) {
-      console.log(user);
       res.status(200).send(user);
     } else {
       res.status(404).send("Email not found !");

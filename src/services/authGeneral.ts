@@ -1,6 +1,9 @@
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 const secret = process.env.JWT_SECRETE;
+
 export function generateToken(user: any) {
   if (secret) return jwt.sign(user, secret, { expiresIn: 60 * 60 });
 }
