@@ -18,7 +18,7 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 
-app.options(cors(corsOptions));
+app.use(cors(corsOptions));
 
 const port = process.env.PORT;
 connectDB();
