@@ -36,8 +36,8 @@ class user {
     if (checkPassword) {
       //add jwt token here
       const token = generateToken({ userEmail, password });
-      res.header("auth_token", "bearer " + token);
-      res.status(200).json({ bearer: token });
+      res.setHeader("Authorization", "bearer " + token);
+      res.status(200).json({ message: "Login successfully" });
     } else {
       return res.status(404).send("Wrong credentials !");
     }

@@ -1,13 +1,23 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import { verifyEmplyeeRole } from "../services/authRole";
-
-const secret = process.env.JWT_SECRETE;
+import { verifyTokenAndGetUser } from "../services/authGeneral";
 
 function authRoleBased(...allowedRoles: any) {
+  const secret = process.env.JWT_SECRETE;
+
   return async (req: Request, res: Response, next: NextFunction) => {
     var userToken = req?.headers["authorization"]?.toString();
     const token = userToken && userToken.split(" ")[1];
+    if (!token) {
+      res.status(404).send("token not found !");
+      return;
+    }
+    const user = verifyTokenAndGetUser(token);
+    if (!user) {
+      res.status(404).send("Invalid token, please login!");
+      return;
+    }
     try {
       if (secret && token !== undefined) {
         const userDetails = jwt.verify(token, secret);
