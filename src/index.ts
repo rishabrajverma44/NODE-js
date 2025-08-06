@@ -9,7 +9,6 @@ import connectDB from "./config/connectDB.config";
 const cors = require("cors");
 
 const app = express();
-dotenv.config();
 
 const corsOptions = {
   origin: "http://localhost:5173",
@@ -19,6 +18,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+dotenv.config();
 
 const port = process.env.PORT;
 connectDB();
