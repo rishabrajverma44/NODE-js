@@ -7,6 +7,7 @@ import {
   UserRegistrationValidation,
 } from "../Validation/UserRegistration";
 import { Userschema } from "../models/Users";
+import { verifyEmplyeeRole } from "../services/authRole";
 
 class user {
   userRegistration = async (req: Request, res: Response) => {
@@ -36,8 +37,9 @@ class user {
     if (checkPassword) {
       //add jwt token here
       const token = generateToken({ userEmail, password });
-      res.header("auth_token", "bearer " + token);
-      res.status(200).json({ bearer: token });
+      const userRole = await verifyEmplyeeRole(userEmail);
+      res.setHeader("Authorization", "bearer " + token);
+      res.status(200).json({ message: "Login successfully", role: userRole });
     } else {
       return res.status(404).send("Wrong credentials !");
     }

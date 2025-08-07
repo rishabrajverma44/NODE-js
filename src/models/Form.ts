@@ -12,7 +12,10 @@ const Formschema = new Schema<IForms>(
       type: String,
       required: true,
     },
-
+    company: {
+      type: String,
+      required: true,
+    },
     role: {
       type: String,
       required: true,
@@ -37,11 +40,6 @@ const Formschema = new Schema<IForms>(
       type: String,
       required: true,
     },
-    applicants: [
-      {
-        userID: String,
-      },
-    ],
   },
   { timestamps: true }
 );
