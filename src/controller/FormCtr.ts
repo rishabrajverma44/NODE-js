@@ -4,25 +4,25 @@ import { FormServices } from "../services/FormServices";
 
 class formController {
   addForm = async (req: Request, res: Response) => {
-    //validating the request
-    const token = req?.cookies?.jobApp_jwt;
-    if (!token) res.status(404).send("Token not found in cookies");
-    const userId = await FormServices.getUserId(token);
-    const formData = { ...req.body, companyID: userId };
-    const { error, value } = FormValidation.validate(formData);
-    if (error) {
-      res.send(error.message);
-    } else {
-      //call the create form function in the service and pass the data from the request
-      const form = await FormServices.createForm(value);
-      res.status(201).send(form);
+    if (req.userEmail) {
+      const userMail: string = req.userEmail;
+      const { error, value } = FormValidation.validate(req.body);
+      if (error) {
+        res.send(error.message);
+      } else if (value) {
+        const form = await FormServices.createForm(value, userMail);
+        res.status(201).send(form);
+      }
     }
   };
 
   //get all forms
   getForms = async (req: Request, res: Response) => {
-    const forms = await FormServices.getForms();
-    res.send(forms);
+    if (req.userEmail) {
+      const userMail: string = req.userEmail;
+      const forms = await FormServices.getCompanyBasedForms(userMail);
+      res.send(forms);
+    }
   };
 
   //get a single form
@@ -36,8 +36,13 @@ class formController {
   //update form
   updateForm = async (req: Request, res: Response) => {
     const id = req.params.id;
-    const form = await FormServices.updateForm(id, req.body);
-    res.send(form);
+    const { error, value } = FormValidation.validate(req.body);
+    if (error) {
+      res.send(error.message);
+    } else if (value) {
+      const form = await FormServices.updateForm(id, value);
+      res.send(req.body);
+    }
   };
 
   //delete a form

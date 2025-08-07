@@ -2,14 +2,20 @@ import { Form } from "../models/Form";
 import { Userschema } from "../models/Users";
 import { IForms } from "../types";
 import { generateCustomId } from "../utils/randomId";
-import jwt from "jsonwebtoken";
-const secret = process.env.JWT_SECRETE;
 
 class formService {
   //create a form
-  async createForm(data: IForms) {
+  async createForm(data: IForms, userMail: string) {
     try {
-      const dataWithId = { ...data, formID: generateCustomId() };
+      const companyID = await Userschema.findOne(
+        { userEmail: userMail },
+        { userID: 1 }
+      );
+      const dataWithId = {
+        ...data,
+        companyID: companyID?.userID,
+        formID: generateCustomId(),
+      };
       await Form.create(dataWithId);
       return data;
     } catch (error) {
@@ -17,10 +23,17 @@ class formService {
     }
   }
 
-  //get all forms
-  async getForms() {
+  //get all forms based on company
+  async getCompanyBasedForms(userMail: string) {
     try {
-      const allForms = await Form.find({}, { applicants: 0, _id: 0 });
+      const companyID = await Userschema.findOne(
+        { userEmail: userMail },
+        { userID: 1, userName: 1 }
+      );
+      const allForms = await Form.find(
+        { companyID: companyID?.userID },
+        { _id: 0, companyID: 0, createdAt: 0, updatedAt: 0, __v: 0 }
+      );
       return allForms;
     } catch (error) {
       console.log(error);
@@ -46,7 +59,7 @@ class formService {
   //update a form
   async updateForm(id: string, data: IForms) {
     try {
-      const forms = await Form.findByIdAndUpdate({ formID: id }, data, {
+      const forms = await Form.findOneAndUpdate({ formID: id }, data, {
         new: true,
       });
       if (!forms) {
@@ -66,25 +79,6 @@ class formService {
       }
     } catch (error) {
       console.log(error);
-    }
-  }
-  //get user id
-  async getUserId(token: string) {
-    if (secret) {
-      const userDetails = jwt.verify(token, secret);
-      const userEmail = await JSON.parse(JSON.stringify(userDetails)).userEmail;
-
-      try {
-        const userData = await Userschema.findOne(
-          {
-            userEmail: userEmail,
-          },
-          { userID: 1 }
-        );
-        if (userData) return userData.userID;
-      } catch (error) {
-        console.log(`email not found ${error}`);
-      }
     }
   }
 }

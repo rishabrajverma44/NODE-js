@@ -7,6 +7,10 @@ const ApplicantsSchema = new Schema<IApplied>(
       type: String,
       require: true,
     },
+    userEmail: {
+      type: String,
+      require: true,
+    },
     formID: {
       type: String,
       require: true,
@@ -17,6 +21,7 @@ const ApplicantsSchema = new Schema<IApplied>(
     },
     formStatus: {
       type: String,
+      default: "Applied",
       require: true,
     },
   },

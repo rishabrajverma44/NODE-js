@@ -4,15 +4,21 @@ import { JobSeekerServices } from "../services/jobSeeker";
 class formController {
   //get all forms
   getForms = async (req: Request, res: Response) => {
-    const forms = await JobSeekerServices.getForms();
-    res.send(forms);
+    if (req.userEmail) {
+      const userMail: string = req.userEmail;
+      const forms = await JobSeekerServices.getFormsByUser(userMail);
+      res.send(forms);
+    } else res.status(404).send({ message: "Email not found !" });
   };
   //apply form
   applyForm = async (req: Request, res: Response) => {
-    const formId = req.body.formID;
-    const userID = req.body.userID;
-    const forms = await JobSeekerServices.applyForm(formId, userID);
-    res.send(forms);
+    if (req.userEmail) {
+      const userMail: string = req.userEmail;
+      const formID: string = req.params.formID;
+
+      const forms = await JobSeekerServices.applyForm(userMail, formID);
+      res.send(forms);
+    } else res.status(404).send({ message: "Email not found !" });
   };
 }
 

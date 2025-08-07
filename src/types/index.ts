@@ -2,9 +2,10 @@
 export interface IForms {
   formID: string;
   companyID: String;
+  company: String;
   role: string;
   jobType: string;
-  location: string;
+  location?: string;
   date: string;
   status: string;
   notes: string;
@@ -17,10 +18,6 @@ export interface IUser {
   userEmail: string;
   password: string;
   role: string;
-  companyDetails: {
-    companyName: string;
-    description: string;
-  };
 }
 //user login
 export interface IUserLogin {
@@ -31,6 +28,7 @@ export interface IUserLogin {
 export interface IApplied {
   formID: string;
   userID: String;
+  userEmail: String;
   companyID: String;
   formStatus: String;
 }

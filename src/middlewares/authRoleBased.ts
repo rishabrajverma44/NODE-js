@@ -3,6 +3,14 @@ import jwt from "jsonwebtoken";
 import { verifyEmplyeeRole } from "../services/authRole";
 import { verifyTokenAndGetUser } from "../services/authGeneral";
 
+declare global {
+  namespace Express {
+    interface Request {
+      userEmail?: string;
+    }
+  }
+}
+
 function authRoleBased(...allowedRoles: any) {
   const secret = process.env.JWT_SECRETE;
 
@@ -26,7 +34,10 @@ function authRoleBased(...allowedRoles: any) {
         const userRole = await verifyEmplyeeRole(userEmail);
         if (!allowedRoles.includes(userRole))
           return res.status(404).send("User not authorized !");
-        else next();
+        else {
+          req.userEmail = userEmail;
+          next();
+        }
       }
     } catch (error) {
       next(error);
