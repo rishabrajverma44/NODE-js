@@ -81,6 +81,19 @@ class formService {
       console.log(error);
     }
   }
+
+  //get header details for emplyeer
+  async getUserDetails(userMail: string) {
+    try {
+      const companyDetails = await Userschema.findOne(
+        { userEmail: userMail },
+        { userName: 1 }
+      );
+      return companyDetails?.userName;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 export const FormServices = new formService();
