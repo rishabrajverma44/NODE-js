@@ -3,6 +3,7 @@ import { FormValidation } from "../Validation/FormValidation";
 import { FormServices } from "../services/FormServices";
 
 class formController {
+  //Add form
   addForm = async (req: Request, res: Response) => {
     if (req.userEmail) {
       const userMail: string = req.userEmail;
@@ -50,6 +51,14 @@ class formController {
     const id = req.params.id;
     await FormServices.deleteForm(id);
     res.send("form deleted");
+  };
+  //get company details
+  getUserDetails = async (req: Request, res: Response) => {
+    if (req.userEmail) {
+      const userMail: string = req.userEmail;
+      const userName = await FormServices.getUserDetails(userMail);
+      res.send(userName);
+    }
   };
 }
 

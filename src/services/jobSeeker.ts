@@ -3,14 +3,56 @@ import { Form } from "../models/Form";
 import { Userschema } from "../models/Users";
 
 class jobSeekerService {
-  async getFormsByUser(userEmail: string | undefined) {
-    try {
-      const allForms = await Form.find({}, { applicants: 0, _id: 0 });
-      //1. find form by this user is applied or not get those form id form collection applied form
-      const appliedForms = await AppliedForms.find({ userEmail: userEmail });
-      console.log(appliedForms);
-      //combine all form with applied forms and add status with it then send use lookup
+  async getAllForm(userEmail: string) {
+    //get user id (job seeker) based on email
+    const userDetails = await Userschema.findOne(
+      { userEmail: userEmail },
+      { userID: 1, _id: 0 }
+    );
 
+    try {
+      /// find data from appliedforms based on user-id
+      const allForms = await Form.aggregate([
+        {
+          $lookup: {
+            from: "appliedforms",
+            let: { formID: "$formID", jobSeekerID: userDetails?.userID },
+            pipeline: [
+              {
+                $match: {
+                  $expr: {
+                    $and: [
+                      { $eq: ["$formID", "$$formID"] },
+                      { $eq: ["$userID", "$$jobSeekerID"] },
+                    ],
+                  },
+                },
+              },
+            ],
+            as: "appliedData",
+          },
+        },
+        {
+          $addFields: {
+            applied: { $gt: [{ $size: "$appliedData" }, 0] }, // true if appliedData has elements
+          },
+        },
+        {
+          $project: {
+            _id: 0,
+            formID: 1,
+            company: 1,
+            role: 1,
+            jobType: 1,
+            location: 1,
+            date: 1,
+            status: 1,
+            notes: 1,
+            applied: 1,
+          },
+        },
+      ]);
+      ///
       return allForms;
     } catch (error) {
       console.log(error);
@@ -61,6 +103,31 @@ class jobSeekerService {
       } catch (error) {
         console.log(error);
       }
+    }
+  }
+
+  //get header details for emplyeer
+  async getUserDetails(userMail: string) {
+    try {
+      const companyDetails = await Userschema.findOne(
+        { userEmail: userMail },
+        { userName: 1 }
+      );
+      return companyDetails?.userName;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  //get applied from details
+  async getAppliedFormDetails(userMail: string) {
+    try {
+      const appliedFormDetails = await AppliedForms.find({
+        userEmail: userMail,
+      });
+      return appliedFormDetails.length;
+    } catch (error) {
+      console.log(error);
     }
   }
 }

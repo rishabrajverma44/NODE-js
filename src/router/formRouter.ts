@@ -8,3 +8,4 @@ formRoute.get("/", FormCtr.getForms);
 formRoute.get("/:id", FormCtr.getAForm);
 formRoute.put("/:id", FormCtr.updateForm);
 formRoute.delete("/:id", FormCtr.deleteForm);
+formRoute.get("/user/userDetails", FormCtr.getUserDetails);
