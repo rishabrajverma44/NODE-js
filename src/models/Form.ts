@@ -38,7 +38,7 @@ const Formschema = new Schema<IForms>(
     },
     notes: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   { timestamps: true }

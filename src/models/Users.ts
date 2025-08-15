@@ -16,7 +16,6 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: true,
       unique: true,
-      index: true,
     },
     password: {
       type: String,
@@ -30,4 +29,4 @@ const userSchema = new Schema<IUser>(
   { timestamps: true }
 );
 
-export const Userschema = model<IUser>("Users", userSchema);
+export const UsersModel = model<IUser>("Users", userSchema);

@@ -20,9 +20,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// Connect to database
-connectDB();
 // Middleware to parse JSON and URL-encoded bodies
+// Parse JSON bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -31,9 +30,19 @@ app.use("/user", userRouter);
 app.use("/company", authRoleBased("company"), formRoute);
 app.use("/job_seeker", authRoleBased("job_seeker"), jobSeekerRoute);
 
-app.get("/", (req, res) => {
-  res.send("hello form server");
-});
+const startServer = async () => {
+  try {
+    await connectDB();
+    app.listen(port, () => {
+      console.log(`App is running on ${port}`);
+    });
+  } catch (err) {
+    console.error("Failed to connect to DB", err);
+  }
+};
+
+startServer();
+
 const port = process.env.PORT;
 
 app.listen(port, () => {

@@ -9,6 +9,7 @@ class formController {
       const userMail: string = req.userEmail;
       const { error, value } = FormValidation.validate(req.body);
       if (error) {
+        console.log(error);
         res.send(error.message);
       } else if (value) {
         const form = await FormServices.createForm(value, userMail);

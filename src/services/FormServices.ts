@@ -1,5 +1,5 @@
 import { Form } from "../models/Form";
-import { Userschema } from "../models/Users";
+import { UsersModel } from "../models/Users";
 import { IForms } from "../types";
 import { generateCustomId } from "../utils/randomId";
 
@@ -7,7 +7,7 @@ class formService {
   //create a form
   async createForm(data: IForms, userMail: string) {
     try {
-      const companyID = await Userschema.findOne(
+      const companyID = await UsersModel.findOne(
         { userEmail: userMail },
         { userID: 1 }
       );
@@ -26,7 +26,7 @@ class formService {
   //get all forms based on company
   async getCompanyBasedForms(userMail: string) {
     try {
-      const companyID = await Userschema.findOne(
+      const companyID = await UsersModel.findOne(
         { userEmail: userMail },
         { userID: 1, userName: 1 }
       );
@@ -85,7 +85,7 @@ class formService {
   //get header details for emplyeer
   async getUserDetails(userMail: string) {
     try {
-      const companyDetails = await Userschema.findOne(
+      const companyDetails = await UsersModel.findOne(
         { userEmail: userMail },
         { userName: 1 }
       );

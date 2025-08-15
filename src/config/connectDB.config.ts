@@ -6,10 +6,12 @@ dotenv.config();
 const usernameDB = process.env.USERNAME_DB;
 const passwordDB = process.env.PASSWORD_DB;
 
-//connection string to mongo atlas
+//connection string to mongo atlas    ?retryWrites=true&w=majority&appName=Cluster0
+const newConnect =
+  "mongodb+srv://mindfire_job:mindfire_job@cluster0.mreks5b.mongodb.net/";
 const connectionString = `mongodb+srv://${usernameDB}:${passwordDB}@clusterjobapp.1k4rkgr.mongodb.net/`;
 const options = {
-  autoIndex: false,
+  autoIndex: true,
   socketTimeoutMS: 45000,
 };
 
