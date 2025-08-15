@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { userCtr } from "../controller/userCtr";
+import { UserCtr } from "../controller/userCtr";
 
 export const userRouter = Router();
-userRouter.post("/register", userCtr.userRegistration);
-userRouter.post("/login", userCtr.userLogin);
-userRouter.post("/reset", userCtr.userChangePassword);
+userRouter.post("/register", UserCtr.userRegistration);
+userRouter.post("/login", UserCtr.userLogin);
+userRouter.post("/reset", UserCtr.userChangePassword);

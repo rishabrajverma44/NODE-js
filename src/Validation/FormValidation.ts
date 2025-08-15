@@ -14,5 +14,5 @@ export const FormValidation = Joi.object({
   }),
   date: Joi.string().required(),
   status: Joi.string().required(),
-  notes: Joi.string().required(),
+  notes: Joi.string().allow(""),
 });

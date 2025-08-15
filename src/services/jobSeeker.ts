@@ -1,11 +1,11 @@
 import { AppliedForms } from "../models/AppliedForms";
 import { Form } from "../models/Form";
-import { Userschema } from "../models/Users";
+import { UsersModel } from "../models/Users";
 
 class jobSeekerService {
   async getAllForm(userEmail: string) {
     //get user id (job seeker) based on email
-    const userDetails = await Userschema.findOne(
+    const userDetails = await UsersModel.findOne(
       { userEmail: userEmail },
       { userID: 1, _id: 0 }
     );
@@ -34,7 +34,7 @@ class jobSeekerService {
         },
         {
           $addFields: {
-            applied: { $gt: [{ $size: "$appliedData" }, 0] }, // true if appliedData has elements
+            applied: { $gt: [{ $size: "$appliedData" }, 0] },
           },
         },
         {
@@ -67,7 +67,7 @@ class jobSeekerService {
         { companyID: 1, _id: 0 }
       );
       //get user id (job seeker) based on email
-      const userDetails = await Userschema.findOne(
+      const userDetails = await UsersModel.findOne(
         { userEmail: userEmail },
         { userID: 1, _id: 0 }
       );
@@ -109,7 +109,7 @@ class jobSeekerService {
   //get header details for emplyeer
   async getUserDetails(userMail: string) {
     try {
-      const companyDetails = await Userschema.findOne(
+      const companyDetails = await UsersModel.findOne(
         { userEmail: userMail },
         { userName: 1 }
       );
@@ -119,13 +119,37 @@ class jobSeekerService {
     }
   }
 
-  //get applied from details
-  async getAppliedFormDetails(userMail: string) {
+  //get applied from numbers
+  async getAppliedFormNumbers(userMail: string) {
     try {
       const appliedFormDetails = await AppliedForms.find({
         userEmail: userMail,
       });
       return appliedFormDetails.length;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  //get form details by form id
+  async getFormDetails(formID: string) {
+    try {
+      const companyID = await Form.findOne(
+        { formID: formID },
+        { companyID: 1 }
+      );
+      const companyDetails = await UsersModel.findOne(
+        {
+          userID: companyID?.companyID,
+        },
+        { userName: 1 }
+      );
+      const formData = await Form.findOne(
+        { formID: formID },
+        { companyID: 0, _id: 0 }
+      );
+      const formDetails = { companyDetails, formData };
+
+      return formDetails;
     } catch (error) {
       console.log(error);
     }

@@ -6,10 +6,10 @@ import {
   UserLoginValidation,
   UserRegistrationValidation,
 } from "../Validation/UserRegistration";
-import { Userschema } from "../models/Users";
+import { UsersModel } from "../models/Users";
 import { verifyEmplyeeRole } from "../services/authRole";
 
-class user {
+class userClass {
   userRegistration = async (req: Request, res: Response) => {
     const data = req.body;
     //validating the registarion request
@@ -19,9 +19,9 @@ class user {
     const email = await userServices.checkEmail(req.body.userEmail);
     if (!email) {
       await userServices.createUser(value);
-      res.status(200).send("user created successfully !");
+      res.status(201).send("user created successfully !");
     } else {
-      res.status(201).send("Email allready exists !");
+      res.status(409).send("Email allready exists !");
     }
   };
   userLogin = async (req: Request, res: Response) => {
@@ -30,6 +30,7 @@ class user {
     const { error, value } = UserLoginValidation.validate(data);
     if (error) res.send(error.message);
     const { userEmail, password } = req.body;
+
     const checkPassword = await userServices.checkSigninPassword(
       userEmail,
       password
@@ -47,7 +48,7 @@ class user {
   userChangePassword = async (req: Request, res: Response) => {
     const data = req.body;
     const { value, error } = UserChangePassword.validate(data);
-    const user = await Userschema.findOne({ userEmail: req.body.userEmail });
+    const user = await UsersModel.findOne({ userEmail: req.body.userEmail });
     if (user) {
       res.status(200).send(user);
     } else {
@@ -55,4 +56,4 @@ class user {
     }
   };
 }
-export const userCtr = new user();
+export const UserCtr = new userClass();

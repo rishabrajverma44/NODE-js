@@ -1,4 +1,4 @@
-import { Userschema } from "../models/Users";
+import { UsersModel } from "../models/Users";
 import bcrypt from "bcrypt";
 import { IUser } from "../types";
 import { generateCustomId } from "../utils/randomId";
@@ -9,14 +9,15 @@ class users {
       const newPass = await bcrypt.hash(data.password.toString(), 10);
       const userData = { ...data, password: newPass };
       userData.userID = generateCustomId();
-      await Userschema.create(userData);
+
+      await UsersModel.create(userData);
     } catch (error) {
       console.log(error);
     }
   }
   async checkEmail(email: string) {
     try {
-      const isEmail = await Userschema.findOne({ userEmail: email });
+      const isEmail = await UsersModel.findOne({ userEmail: email });
       if (isEmail === null) {
         return false;
       } else if (isEmail) {
@@ -27,7 +28,7 @@ class users {
     }
   }
   async checkSigninPassword(userEmail: string, password: string) {
-    const user = await Userschema.findOne({
+    const user = await UsersModel.findOne({
       userEmail: userEmail,
     });
     if (user !== null) {

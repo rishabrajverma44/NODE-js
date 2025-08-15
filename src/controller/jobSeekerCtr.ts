@@ -31,11 +31,21 @@ class formController {
     }
   };
   //get applied form details
-  getAppliedFormDetails = async (req: Request, res: Response) => {
+  getAppliedFormNumbers = async (req: Request, res: Response) => {
     if (req.userEmail) {
       const userMail: string = req.userEmail;
-      const userName = await JobSeekerServices.getAppliedFormDetails(userMail);
-      res.send(userName);
+      const appliedForms = await JobSeekerServices.getAppliedFormNumbers(
+        userMail
+      );
+      res.send(appliedForms);
+    }
+  };
+  //get job details by formID
+  getFormDetailsBYform = async (req: Request, res: Response) => {
+    if (req.userEmail) {
+      const formID: string = req.params.formID;
+      const formDetails = await JobSeekerServices.getFormDetails(formID);
+      res.send(formDetails);
     }
   };
 }

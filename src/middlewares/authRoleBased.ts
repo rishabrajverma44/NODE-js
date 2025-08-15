@@ -23,7 +23,7 @@ function authRoleBased(...allowedRoles: any) {
     }
     const user = verifyTokenAndGetUser(token);
     if (!user) {
-      res.status(404).send("Invalid token, please login!");
+      res.status(405).send("Invalid token, please login!");
       return;
     }
     try {

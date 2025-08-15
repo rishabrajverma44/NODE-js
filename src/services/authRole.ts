@@ -1,8 +1,8 @@
-import { Userschema } from "../models/Users";
+import { UsersModel } from "../models/Users";
 
 export async function verifyEmplyeeRole(email: string) {
   try {
-    const user = await Userschema.findOne(
+    const user = await UsersModel.findOne(
       { userEmail: email },
       { role: 1, _id: 0 }
     );
