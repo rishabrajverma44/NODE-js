@@ -12,13 +12,13 @@ class jobSeekerService {
     const page = reqest.page;
     const size = reqest.size;
     const userDetails = await UsersModel.findOne(
-      { Email },
+      { userEmail: Email },
       { userID: 1, _id: 0 }
     );
 
     try {
       const matchStage: any = {};
-      // 🔍 Search by text (role, company, location)
+      //Search by text (role, company, location)
       if (search) {
         matchStage.$or = [
           { role: { $regex: search, $options: "i" } },
@@ -27,7 +27,7 @@ class jobSeekerService {
         ];
       }
 
-      // 🎯 Apply filters dynamically
+      //  Apply filters dynamically
       if (filters) {
         Object.keys(filters).forEach((key) => {
           matchStage[key] = filters[key];
@@ -79,10 +79,10 @@ class jobSeekerService {
           },
         },
 
-        // 📜 Sort newest first
+        //  Sort newest first
         { $sort: { date: -1 } },
 
-        // 📄 Pagination for infinite scroll
+        // Pagination for infinite scroll
         { $skip: skip },
         { $limit: size },
       ]);
@@ -95,7 +95,7 @@ class jobSeekerService {
         page,
         size,
         total: totalCount,
-        hasMore: skip + size < totalCount, // for infinite scroll
+        hasMore: skip + size < totalCount,
       };
     } catch (error) {
       console.log(error);
@@ -201,6 +201,28 @@ class jobSeekerService {
         userEmail: userMail,
       });
       return appliedFormDetails.length;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  //get All Applied Form by user base on email id
+  async getAppliedForms(userMail: string) {
+    try {
+      const appliedFormDetails = await AppliedForms.find(
+        {
+          userEmail: userMail,
+        },
+        {
+          formID: 1,
+          _id: 0,
+        }
+      );
+      const formIDs = appliedFormDetails.map((form) => form.formID);
+
+      const forms = await Form.find({ formID: { $in: formIDs } }, { _id: 0 });
+
+      return forms;
     } catch (error) {
       console.log(error);
     }

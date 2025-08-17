@@ -60,6 +60,15 @@ class formController {
       res.send(appliedForms);
     }
   };
+
+  //get All Applied Form by user
+  getAppliedForms = async (req: Request, res: Response) => {
+    if (req.userEmail) {
+      const userMail: string = req.userEmail;
+      const appliedForms = await JobSeekerServices.getAppliedForms(userMail);
+      res.send(appliedForms);
+    }
+  };
   //get job details by formID
   getFormDetailsBYform = async (req: Request, res: Response) => {
     if (req.userEmail) {
