@@ -32,3 +32,11 @@ export interface IApplied {
   companyID: String;
   formStatus: String;
 }
+//pagination types
+export interface PaginationRequest {
+  Email: string;
+  page: number;
+  size: number;
+  search: string;
+  filters: { [key: string]: string };
+}

@@ -61,6 +61,15 @@ class formController {
       res.send(userName);
     }
   };
+
+  //dummy form data insert many
+  postDummydata = async (req: Request, res: Response) => {
+    const response = await FormServices.postDummyForms();
+    res.send({
+      success: response?.success,
+      elementInserted: response?.insertedCount,
+    });
+  };
 }
 
 //export controller

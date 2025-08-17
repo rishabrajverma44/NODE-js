@@ -1,0 +1,978 @@
+[
+  {
+    "company": "TechCorp",
+    "role": "Software Engineer",
+    "jobType": "Remote",
+    "location": "New York",
+    "date": "2025-08-01",
+    "status": "Applied",
+    "notes": "<p>Looking for React.js developer</p>"
+  },
+  {
+    "company": "InnoSoft",
+    "role": "Data Analyst",
+    "jobType": "Onsite",
+    "location": "Toronto",
+    "date": "2025-08-02",
+    "status": "Interviewing",
+    "notes": "<ul><li>Strong SQL</li><li>Good communication</li></ul>"
+  },
+  {
+    "company": "FutureWorks",
+    "role": "Project Manager",
+    "jobType": "Hybrid",
+    "location": "San Francisco",
+    "date": "2025-08-03",
+    "status": "Hired",
+    "notes": "<p>Experience in Agile and Scrum required</p>"
+  },
+  {
+    "company": "DataMind",
+    "role": "Machine Learning Engineer",
+    "jobType": "Remote",
+    "location": "Berlin",
+    "date": "2025-08-04",
+    "status": "Applied",
+    "notes": "<ul><li>Python</li><li>TensorFlow</li></ul>"
+  },
+  {
+    "company": "BrightTech",
+    "role": "UI/UX Designer",
+    "jobType": "Onsite",
+    "location": "London",
+    "date": "2025-08-05",
+    "status": "Closed",
+    "notes": "<p>Portfolio with web & mobile designs needed</p>"
+  },
+  {
+    "company": "NextGen Systems",
+    "role": "DevOps Engineer",
+    "jobType": "Hybrid",
+    "location": "Toronto",
+    "date": "2025-08-06",
+    "status": "Interviewing",
+    "notes": "<ul><li>AWS</li><li>CI/CD pipelines</li></ul>"
+  },
+  {
+    "company": "SkyNet",
+    "role": "Cybersecurity Specialist",
+    "jobType": "Remote",
+    "location": "Chicago",
+    "date": "2025-08-07",
+    "status": "Applied",
+    "notes": "<p>Knowledge of penetration testing</p>"
+  },
+  {
+    "company": "GreenWorks",
+    "role": "Sustainability Consultant",
+    "jobType": "Onsite",
+    "location": "Oslo",
+    "date": "2025-08-08",
+    "status": "Hired",
+    "notes": "<p>Environmental impact analysis experience</p>"
+  },
+  {
+    "company": "VisionSoft",
+    "role": "AI Researcher",
+    "jobType": "Hybrid",
+    "location": "Tokyo",
+    "date": "2025-08-09",
+    "status": "Applied",
+    "notes": "<ul><li>NLP models</li><li>Deep learning</li></ul>"
+  },
+  {
+    "company": "HealthSync",
+    "role": "Healthcare Data Scientist",
+    "jobType": "Remote",
+    "location": "Boston",
+    "date": "2025-08-10",
+    "status": "Closed",
+    "notes": "<p>Experience in medical datasets preferred</p>"
+  },
+  {
+    "company": "CloudX",
+    "role": "Cloud Architect",
+    "jobType": "Onsite",
+    "location": "Seattle",
+    "date": "2025-08-11",
+    "status": "Interviewing",
+    "notes": "<ul><li>Azure</li><li>AWS</li><li>GCP</li></ul>"
+  },
+  {
+    "company": "UrbanTech",
+    "role": "Smart City Planner",
+    "jobType": "Hybrid",
+    "location": "Singapore",
+    "date": "2025-08-12",
+    "status": "Hired",
+    "notes": "<p>IoT and urban planning expertise</p>"
+  },
+  {
+    "company": "FinSolve",
+    "role": "Financial Analyst",
+    "jobType": "Remote",
+    "location": "Zurich",
+    "date": "2025-08-13",
+    "status": "Applied",
+    "notes": "<p>Excel + PowerBI strong skills</p>"
+  },
+  {
+    "company": "EduNext",
+    "role": "E-learning Developer",
+    "jobType": "Onsite",
+    "location": "Paris",
+    "date": "2025-08-14",
+    "status": "Interviewing",
+    "notes": "<ul><li>Moodle</li><li>SCORM</li></ul>"
+  },
+  {
+    "company": "BuildSmart",
+    "role": "Civil Engineer",
+    "jobType": "Hybrid",
+    "location": "Dubai",
+    "date": "2025-08-15",
+    "status": "Hired",
+    "notes": "<p>Experience in high-rise projects</p>"
+  },
+  {
+    "company": "AgroTech",
+    "role": "Agricultural Scientist",
+    "jobType": "Remote",
+    "location": "Sydney",
+    "date": "2025-08-16",
+    "status": "Applied",
+    "notes": "<p>Crop analytics & drone mapping</p>"
+  },
+  {
+    "company": "MediaWorks",
+    "role": "Content Strategist",
+    "jobType": "Onsite",
+    "location": "Los Angeles",
+    "date": "2025-08-17",
+    "status": "Closed",
+    "notes": "<ul><li>Strong SEO</li><li>Copywriting</li></ul>"
+  },
+  {
+    "company": "RoboCorp",
+    "role": "Robotics Engineer",
+    "jobType": "Hybrid",
+    "location": "Munich",
+    "date": "2025-08-18",
+    "status": "Applied",
+    "notes": "<p>Hands-on with automation systems</p>"
+  },
+  {
+    "company": "AeroDynamics",
+    "role": "Aerospace Engineer",
+    "jobType": "Remote",
+    "location": "Houston",
+    "date": "2025-08-19",
+    "status": "Interviewing",
+    "notes": "<p>Simulation & CAD tools experience</p>"
+  },
+  {
+    "company": "QuantumX",
+    "role": "Quantum Researcher",
+    "jobType": "Onsite",
+    "location": "Geneva",
+    "date": "2025-08-20",
+    "status": "Hired",
+    "notes": "<ul><li>Qiskit</li><li>IBM Quantum</li></ul>"
+  },
+
+  {
+    "company": "TechCorp",
+    "role": "Software Engineer",
+    "jobType": "Remote",
+    "location": "New York",
+    "date": "2025-08-01",
+    "status": "Applied",
+    "notes": "<p>Looking for an experienced developer</p>"
+  },
+  {
+    "company": "InnoSoft",
+    "role": "Data Analyst",
+    "jobType": "Hybrid",
+    "location": "Toronto",
+    "date": "2025-08-02",
+    "status": "Interviewing",
+    "notes": "<ul><li>Good communication skills</li><li>Strong SQL</li></ul>"
+  },
+  {
+    "company": "NextGen Solutions",
+    "role": "Project Manager",
+    "jobType": "Onsite",
+    "location": "London",
+    "date": "2025-08-03",
+    "status": "Hired",
+    "notes": "<p>Agile methodology experience required</p>"
+  },
+  {
+    "company": "CloudWorks",
+    "role": "DevOps Engineer",
+    "jobType": "Remote",
+    "location": "San Francisco",
+    "date": "2025-08-04",
+    "status": "Applied",
+    "notes": "<p>Strong AWS knowledge</p>"
+  },
+  {
+    "company": "BrightFuture",
+    "role": "UI/UX Designer",
+    "jobType": "Hybrid",
+    "location": "Berlin",
+    "date": "2025-08-05",
+    "status": "Interviewing",
+    "notes": "<ul><li>Portfolio required</li><li>Figma expertise</li></ul>"
+  },
+  {
+    "company": "CyberTech",
+    "role": "Security Specialist",
+    "jobType": "Onsite",
+    "location": "Tokyo",
+    "date": "2025-08-06",
+    "status": "Hired",
+    "notes": "<p>Knowledge of penetration testing tools</p>"
+  },
+  {
+    "company": "HealthAI",
+    "role": "ML Engineer",
+    "jobType": "Remote",
+    "location": "Sydney",
+    "date": "2025-08-07",
+    "status": "Applied",
+    "notes": "<p>Background in healthcare preferred</p>"
+  },
+  {
+    "company": "EduNext",
+    "role": "Content Strategist",
+    "jobType": "Hybrid",
+    "location": "Paris",
+    "date": "2025-08-08",
+    "status": "Interviewing",
+    "notes": "<ul><li>SEO knowledge</li><li>Experience in EdTech</li></ul>"
+  },
+  {
+    "company": "FinSecure",
+    "role": "Business Analyst",
+    "jobType": "Onsite",
+    "location": "Dubai",
+    "date": "2025-08-09",
+    "status": "Hired",
+    "notes": "<p>Banking domain knowledge</p>"
+  },
+  {
+    "company": "AutoAI",
+    "role": "AI Researcher",
+    "jobType": "Remote",
+    "location": "Detroit",
+    "date": "2025-08-10",
+    "status": "Applied",
+    "notes": "<p>Experience in autonomous systems</p>"
+  },
+
+  {
+    "company": "GreenFuture",
+    "role": "Sustainability Consultant",
+    "jobType": "Hybrid",
+    "location": "Amsterdam",
+    "date": "2025-08-11",
+    "status": "Interviewing",
+    "notes": "<p>Knowledge of renewable energy</p>"
+  },
+  {
+    "company": "MediLife",
+    "role": "Healthcare Consultant",
+    "jobType": "Onsite",
+    "location": "Singapore",
+    "date": "2025-08-12",
+    "status": "Hired",
+    "notes": "<p>Clinical research background</p>"
+  },
+  {
+    "company": "AgriNext",
+    "role": "Data Scientist",
+    "jobType": "Remote",
+    "location": "Delhi",
+    "date": "2025-08-13",
+    "status": "Applied",
+    "notes": "<p>Agriculture IoT data analysis</p>"
+  },
+  {
+    "company": "TravelEasy",
+    "role": "Marketing Manager",
+    "jobType": "Hybrid",
+    "location": "Rome",
+    "date": "2025-08-14",
+    "status": "Interviewing",
+    "notes": "<ul><li>Experience in travel industry</li><li>Strong PR skills</li></ul>"
+  },
+  {
+    "company": "FoodieTech",
+    "role": "Chef Consultant",
+    "jobType": "Onsite",
+    "location": "Barcelona",
+    "date": "2025-08-15",
+    "status": "Hired",
+    "notes": "<p>Culinary innovation expertise</p>"
+  },
+  {
+    "company": "EcoHomes",
+    "role": "Architect",
+    "jobType": "Remote",
+    "location": "Vancouver",
+    "date": "2025-08-16",
+    "status": "Applied",
+    "notes": "<p>Green building certification knowledge</p>"
+  },
+  {
+    "company": "BioPharma",
+    "role": "Lab Technician",
+    "jobType": "Hybrid",
+    "location": "Zurich",
+    "date": "2025-08-17",
+    "status": "Interviewing",
+    "notes": "<p>Experience in molecular biology</p>"
+  },
+  {
+    "company": "GameVerse",
+    "role": "Game Developer",
+    "jobType": "Onsite",
+    "location": "Seoul",
+    "date": "2025-08-18",
+    "status": "Hired",
+    "notes": "<p>Unreal engine developer required</p>"
+  },
+  {
+    "company": "ShopLink",
+    "role": "E-commerce Specialist",
+    "jobType": "Remote",
+    "location": "Los Angeles",
+    "date": "2025-08-19",
+    "status": "Applied",
+    "notes": "<p>Experience with Shopify & Magento</p>"
+  },
+  {
+    "company": "SkyNetics",
+    "role": "Aerospace Engineer",
+    "jobType": "Hybrid",
+    "location": "Houston",
+    "date": "2025-08-20",
+    "status": "Interviewing",
+    "notes": "<p>Satellite systems design</p>"
+  },
+
+  {
+    "company": "UrbanNext",
+    "role": "Civil Engineer",
+    "jobType": "Onsite",
+    "location": "Chicago",
+    "date": "2025-08-21",
+    "status": "Hired",
+    "notes": "<p>Urban planning experience</p>"
+  },
+  {
+    "company": "WellnessCorp",
+    "role": "Fitness Trainer",
+    "jobType": "Remote",
+    "location": "Miami",
+    "date": "2025-08-22",
+    "status": "Applied",
+    "notes": "<p>Certified personal trainer</p>"
+  },
+  {
+    "company": "EduPro",
+    "role": "Online Tutor",
+    "jobType": "Hybrid",
+    "location": "Melbourne",
+    "date": "2025-08-23",
+    "status": "Interviewing",
+    "notes": "<ul><li>Math specialization</li><li>Flexible hours</li></ul>"
+  },
+  {
+    "company": "RoboTech",
+    "role": "Robotics Engineer",
+    "jobType": "Onsite",
+    "location": "Boston",
+    "date": "2025-08-24",
+    "status": "Hired",
+    "notes": "<p>Strong robotics programming skills</p>"
+  },
+  {
+    "company": "OceanBlue",
+    "role": "Marine Biologist",
+    "jobType": "Remote",
+    "location": "Cape Town",
+    "date": "2025-08-25",
+    "status": "Applied",
+    "notes": "<p>Research on coral reefs</p>"
+  },
+  {
+    "company": "AutoDrive",
+    "role": "Autonomous Systems Engineer",
+    "jobType": "Hybrid",
+    "location": "Munich",
+    "date": "2025-08-26",
+    "status": "Interviewing",
+    "notes": "<p>ADAS system knowledge</p>"
+  },
+  {
+    "company": "AgriGrow",
+    "role": "Soil Scientist",
+    "jobType": "Onsite",
+    "location": "Nairobi",
+    "date": "2025-08-27",
+    "status": "Hired",
+    "notes": "<p>Crop yield optimization</p>"
+  },
+  {
+    "company": "TechHive",
+    "role": "Backend Developer",
+    "jobType": "Remote",
+    "location": "Austin",
+    "date": "2025-08-28",
+    "status": "Applied",
+    "notes": "<p>Node.js and Python expertise</p>"
+  },
+  {
+    "company": "MediTech",
+    "role": "Biomedical Engineer",
+    "jobType": "Hybrid",
+    "location": "Stockholm",
+    "date": "2025-08-29",
+    "status": "Interviewing",
+    "notes": "<p>Medical device design</p>"
+  },
+  {
+    "company": "DesignHub",
+    "role": "Graphic Designer",
+    "jobType": "Onsite",
+    "location": "Lisbon",
+    "date": "2025-08-30",
+    "status": "Hired",
+    "notes": "<p>Adobe Creative Suite expertise</p>"
+  },
+  {
+    "company": "BrightWare",
+    "role": "Frontend Developer",
+    "jobType": "Remote",
+    "location": "Paris",
+    "date": "2025-06-03",
+    "status": "Applied",
+    "notes": "<p>Good grasp of Vue.js</p>"
+  },
+  {
+    "company": "AeroNext",
+    "role": "Systems Engineer",
+    "jobType": "Onsite",
+    "location": "Seattle",
+    "date": "2025-05-22",
+    "status": "Interviewing",
+    "notes": "<ul><li>Background in aerospace systems</li><li>Experience with MATLAB</li></ul>"
+  },
+  {
+    "company": "NeoBank",
+    "role": "Product Designer",
+    "jobType": "Hybrid",
+    "location": "New York",
+    "date": "2025-04-19",
+    "status": "Hired",
+    "notes": "<p>Worked on mobile app redesign</p>"
+  },
+  {
+    "company": "CloudWorks",
+    "role": "DevOps Engineer",
+    "jobType": "Remote",
+    "location": "Berlin",
+    "date": "2025-06-11",
+    "status": "Applied",
+    "notes": "<p>Focus on AWS infrastructure</p>"
+  },
+  {
+    "company": "VisionTech",
+    "role": "Data Scientist",
+    "jobType": "Onsite",
+    "location": "Toronto",
+    "date": "2025-07-05",
+    "status": "Interviewing",
+    "notes": "<ul><li>Strong in machine learning</li><li>Python expert</li></ul>"
+  },
+  {
+    "company": "NextGen Robotics",
+    "role": "AI Engineer",
+    "jobType": "Hybrid",
+    "location": "Tokyo",
+    "date": "2025-08-01",
+    "status": "Hired",
+    "notes": "<p>Worked on autonomous systems</p>"
+  },
+  {
+    "company": "AgriSoft",
+    "role": "Backend Developer",
+    "jobType": "Remote",
+    "location": "Chicago",
+    "date": "2025-07-15",
+    "status": "Applied",
+    "notes": "<p>Strong in Node.js</p>"
+  },
+  {
+    "company": "EduTech",
+    "role": "Curriculum Designer",
+    "jobType": "Onsite",
+    "location": "London",
+    "date": "2025-05-30",
+    "status": "Interviewing",
+    "notes": "<p>Worked with online education platforms</p>"
+  },
+  {
+    "company": "HealthAI",
+    "role": "ML Researcher",
+    "jobType": "Hybrid",
+    "location": "Boston",
+    "date": "2025-06-25",
+    "status": "Hired",
+    "notes": "<p>Focus on medical imaging</p>"
+  },
+  {
+    "company": "SmartLogistics",
+    "role": "Business Analyst",
+    "jobType": "Remote",
+    "location": "Dubai",
+    "date": "2025-07-22",
+    "status": "Applied",
+    "notes": "<p>Specialized in supply chain analysis</p>"
+  },
+  {
+    "company": "QuantumSoft",
+    "role": "Quantum Programmer",
+    "jobType": "Onsite",
+    "location": "Zurich",
+    "date": "2025-06-13",
+    "status": "Interviewing",
+    "notes": "<p>Worked with Q# and quantum algorithms</p>"
+  },
+  {
+    "company": "TravelGo",
+    "role": "Mobile Developer",
+    "jobType": "Hybrid",
+    "location": "Sydney",
+    "date": "2025-05-14",
+    "status": "Hired",
+    "notes": "<p>Flutter and React Native experience</p>"
+  },
+  {
+    "company": "MediCore",
+    "role": "Healthcare Consultant",
+    "jobType": "Remote",
+    "location": "Toronto",
+    "date": "2025-06-21",
+    "status": "Applied",
+    "notes": "<p>Specialized in hospital IT systems</p>"
+  },
+  {
+    "company": "AutoSoft",
+    "role": "Embedded Systems Engineer",
+    "jobType": "Onsite",
+    "location": "Detroit",
+    "date": "2025-04-09",
+    "status": "Interviewing",
+    "notes": "<p>Strong in C and automotive protocols</p>"
+  },
+  {
+    "company": "CityTech",
+    "role": "GIS Analyst",
+    "jobType": "Hybrid",
+    "location": "Amsterdam",
+    "date": "2025-07-02",
+    "status": "Hired",
+    "notes": "<p>Worked with spatial data and mapping</p>"
+  },
+  {
+    "company": "RoboTech",
+    "role": "Control Systems Engineer",
+    "jobType": "Remote",
+    "location": "Seoul",
+    "date": "2025-05-29",
+    "status": "Applied",
+    "notes": "<p>Expertise in robotic motion control</p>"
+  },
+  {
+    "company": "EcoBuild",
+    "role": "Civil Engineer",
+    "jobType": "Onsite",
+    "location": "Oslo",
+    "date": "2025-06-07",
+    "status": "Interviewing",
+    "notes": "<p>Experience in sustainable building</p>"
+  },
+  {
+    "company": "GameWorks",
+    "role": "Game Developer",
+    "jobType": "Hybrid",
+    "location": "Montreal",
+    "date": "2025-08-09",
+    "status": "Hired",
+    "notes": "<p>Unity and Unreal experience</p>"
+  },
+  {
+    "company": "CyberDef",
+    "role": "Cybersecurity Analyst",
+    "jobType": "Remote",
+    "location": "San Francisco",
+    "date": "2025-05-18",
+    "status": "Applied",
+    "notes": "<p>Expert in penetration testing</p>"
+  },
+  {
+    "company": "BioSoft",
+    "role": "Bioinformatics Specialist",
+    "jobType": "Onsite",
+    "location": "Stockholm",
+    "date": "2025-06-28",
+    "status": "Interviewing",
+    "notes": "<p>Worked with genome data analysis</p>"
+  },
+  {
+    "company": "FinEdge",
+    "role": "Financial Analyst",
+    "jobType": "Hybrid",
+    "location": "Hong Kong",
+    "date": "2025-07-10",
+    "status": "Hired",
+    "notes": "<p>Strong Excel and data modeling skills</p>"
+  },
+  {
+    "company": "AgroNext",
+    "role": "Agricultural Engineer",
+    "jobType": "Remote",
+    "location": "Delhi",
+    "date": "2025-05-07",
+    "status": "Applied",
+    "notes": "<p>Worked on smart irrigation systems</p>"
+  },
+  {
+    "company": "OceanTech",
+    "role": "Marine Biologist",
+    "jobType": "Onsite",
+    "location": "Cape Town",
+    "date": "2025-07-14",
+    "status": "Interviewing",
+    "notes": "<p>Specialized in coral reef studies</p>"
+  },
+  {
+    "company": "NewsNow",
+    "role": "Content Editor",
+    "jobType": "Hybrid",
+    "location": "Los Angeles",
+    "date": "2025-06-17",
+    "status": "Hired",
+    "notes": "<p>Background in digital journalism</p>"
+  },
+  {
+    "company": "AIWorks",
+    "role": "NLP Engineer",
+    "jobType": "Remote",
+    "location": "Bangalore",
+    "date": "2025-08-05",
+    "status": "Applied",
+    "notes": "<p>Worked on large language models</p>"
+  },
+  {
+    "company": "SpaceVision",
+    "role": "Astrophysicist",
+    "jobType": "Onsite",
+    "location": "Houston",
+    "date": "2025-07-20",
+    "status": "Interviewing",
+    "notes": "<p>Worked with telescope data</p>"
+  },
+  {
+    "company": "Foodies",
+    "role": "Chef",
+    "jobType": "Hybrid",
+    "location": "Rome",
+    "date": "2025-06-19",
+    "status": "Hired",
+    "notes": "<p>Expert in Italian cuisine</p>"
+  },
+  {
+    "company": "Artify",
+    "role": "Graphic Designer",
+    "jobType": "Remote",
+    "location": "Barcelona",
+    "date": "2025-05-25",
+    "status": "Applied",
+    "notes": "<p>Strong in branding and UX design</p>"
+  },
+  {
+    "company": "GreenEnergy",
+    "role": "Renewable Energy Consultant",
+    "jobType": "Onsite",
+    "location": "Copenhagen",
+    "date": "2025-06-30",
+    "status": "Interviewing",
+    "notes": "<p>Worked on wind energy projects</p>"
+  },
+
+  {
+    "company": "BlueSky Tech",
+    "role": "Cloud Engineer",
+    "jobType": "Remote",
+    "location": "San Jose",
+    "date": "2025-07-21",
+    "status": "Applied",
+    "notes": "<p>Experience with AWS and GCP required</p>"
+  },
+  {
+    "company": "NextGen AI",
+    "role": "AI Research Scientist",
+    "jobType": "Hybrid",
+    "location": "Toronto",
+    "date": "2025-07-22",
+    "status": "Interviewing",
+    "notes": "<ul><li>Strong ML background</li><li>PhD preferred</li></ul>"
+  },
+  {
+    "company": "CyberNet",
+    "role": "Security Analyst",
+    "jobType": "Onsite",
+    "location": "New York",
+    "date": "2025-07-23",
+    "status": "Hired",
+    "notes": "<p>Focus on network and application security</p>"
+  },
+  {
+    "company": "AgroTech",
+    "role": "IoT Developer",
+    "jobType": "Remote",
+    "location": "Austin",
+    "date": "2025-07-24",
+    "status": "Applied",
+    "notes": "<p>Working on smart farming solutions</p>"
+  },
+  {
+    "company": "MedSoft",
+    "role": "Healthcare Data Scientist",
+    "jobType": "Hybrid",
+    "location": "Chicago",
+    "date": "2025-07-25",
+    "status": "Interviewing",
+    "notes": "<ul><li>Strong Python skills</li><li>Experience with EHR data</li></ul>"
+  },
+  {
+    "company": "VisionWorks",
+    "role": "Computer Vision Engineer",
+    "jobType": "Onsite",
+    "location": "Los Angeles",
+    "date": "2025-07-26",
+    "status": "Applied",
+    "notes": "<p>Expertise in image recognition models</p>"
+  },
+  {
+    "company": "FinTechX",
+    "role": "Quantitative Analyst",
+    "jobType": "Remote",
+    "location": "London",
+    "date": "2025-07-27",
+    "status": "Hired",
+    "notes": "<p>Risk modeling and portfolio optimization</p>"
+  },
+  {
+    "company": "AutoNext",
+    "role": "Autonomous Vehicle Engineer",
+    "jobType": "Hybrid",
+    "location": "Detroit",
+    "date": "2025-07-28",
+    "status": "Interviewing",
+    "notes": "<p>Experience with LiDAR and ADAS</p>"
+  },
+  {
+    "company": "BioWare Labs",
+    "role": "Bioinformatics Engineer",
+    "jobType": "Remote",
+    "location": "Boston",
+    "date": "2025-07-29",
+    "status": "Applied",
+    "notes": "<p>Experience with genomic datasets</p>"
+  },
+  {
+    "company": "SmartGrid Solutions",
+    "role": "Energy Systems Engineer",
+    "jobType": "Onsite",
+    "location": "Houston",
+    "date": "2025-07-30",
+    "status": "Hired",
+    "notes": "<p>Knowledge of renewable integration</p>"
+  },
+  {
+    "company": "RetailNet",
+    "role": "E-commerce Specialist",
+    "jobType": "Remote",
+    "location": "Seattle",
+    "date": "2025-07-31",
+    "status": "Interviewing",
+    "notes": "<p>Experience in Shopify and Magento</p>"
+  },
+  {
+    "company": "BlockChainers",
+    "role": "Blockchain Developer",
+    "jobType": "Hybrid",
+    "location": "San Francisco",
+    "date": "2025-08-01",
+    "status": "Applied",
+    "notes": "<p>Smart contracts with Solidity</p>"
+  },
+  {
+    "company": "AgileWorks",
+    "role": "Scrum Master",
+    "jobType": "Onsite",
+    "location": "Toronto",
+    "date": "2025-08-02",
+    "status": "Hired",
+    "notes": "<p>Agile project leadership</p>"
+  },
+  {
+    "company": "NeuroTech",
+    "role": "Neural Network Engineer",
+    "jobType": "Remote",
+    "location": "Berlin",
+    "date": "2025-08-03",
+    "status": "Interviewing",
+    "notes": "<p>Deep learning research role</p>"
+  },
+  {
+    "company": "GreenEarth",
+    "role": "Sustainability Analyst",
+    "jobType": "Hybrid",
+    "location": "Amsterdam",
+    "date": "2025-08-04",
+    "status": "Applied",
+    "notes": "<p>Focus on carbon footprint reduction</p>"
+  },
+  {
+    "company": "EduSmart",
+    "role": "EdTech Developer",
+    "jobType": "Onsite",
+    "location": "London",
+    "date": "2025-08-05",
+    "status": "Hired",
+    "notes": "<p>Interactive learning platforms</p>"
+  },
+  {
+    "company": "PharmaSoft",
+    "role": "Clinical Data Manager",
+    "jobType": "Remote",
+    "location": "Boston",
+    "date": "2025-08-06",
+    "status": "Applied",
+    "notes": "<p>Experience with FDA compliance</p>"
+  },
+  {
+    "company": "GameZone",
+    "role": "Game Developer",
+    "jobType": "Hybrid",
+    "location": "Tokyo",
+    "date": "2025-08-07",
+    "status": "Interviewing",
+    "notes": "<p>Unity and Unreal expertise</p>"
+  },
+  {
+    "company": "SoftServe",
+    "role": "Technical Writer",
+    "jobType": "Remote",
+    "location": "Vancouver",
+    "date": "2025-08-08",
+    "status": "Applied",
+    "notes": "<p>Experience writing API docs</p>"
+  },
+  {
+    "company": "CloudNet",
+    "role": "DevOps Engineer",
+    "jobType": "Onsite",
+    "location": "Dublin",
+    "date": "2025-08-09",
+    "status": "Hired",
+    "notes": "<p>CI/CD pipelines, Kubernetes</p>"
+  },
+  {
+    "company": "AgroGrow",
+    "role": "Data Engineer",
+    "jobType": "Remote",
+    "location": "Melbourne",
+    "date": "2025-08-10",
+    "status": "Interviewing",
+    "notes": "<p>Focus on agricultural data pipelines</p>"
+  },
+  {
+    "company": "MindWave",
+    "role": "UX Researcher",
+    "jobType": "Hybrid",
+    "location": "Paris",
+    "date": "2025-08-11",
+    "status": "Applied",
+    "notes": "<p>Human-centered design expertise</p>"
+  },
+  {
+    "company": "DataXpress",
+    "role": "Big Data Engineer",
+    "jobType": "Onsite",
+    "location": "Bangalore",
+    "date": "2025-08-12",
+    "status": "Hired",
+    "notes": "<p>Hadoop and Spark skills</p>"
+  },
+  {
+    "company": "CyberWave",
+    "role": "Penetration Tester",
+    "jobType": "Remote",
+    "location": "Singapore",
+    "date": "2025-08-13",
+    "status": "Interviewing",
+    "notes": "<p>OSCP or CEH preferred</p>"
+  },
+  {
+    "company": "SmartHealth",
+    "role": "AI in Healthcare Engineer",
+    "jobType": "Hybrid",
+    "location": "Zurich",
+    "date": "2025-08-14",
+    "status": "Applied",
+    "notes": "<p>Predictive modeling for patient care</p>"
+  },
+  {
+    "company": "UrbanTech",
+    "role": "Smart City Planner",
+    "jobType": "Onsite",
+    "location": "Dubai",
+    "date": "2025-08-15",
+    "status": "Hired",
+    "notes": "<p>IoT-driven infrastructure design</p>"
+  },
+  {
+    "company": "AeroNext",
+    "role": "Aerospace Engineer",
+    "jobType": "Remote",
+    "location": "Seattle",
+    "date": "2025-08-16",
+    "status": "Applied",
+    "notes": "<p>Experience with UAV systems</p>"
+  },
+  {
+    "company": "BuildNet",
+    "role": "Civil Engineer",
+    "jobType": "Hybrid",
+    "location": "Sydney",
+    "date": "2025-08-17",
+    "status": "Interviewing",
+    "notes": "<p>Smart construction technologies</p>"
+  },
+  {
+    "company": "RoboDynamics",
+    "role": "Robotics Engineer",
+    "jobType": "Onsite",
+    "location": "Boston",
+    "date": "2025-08-18",
+    "status": "Hired",
+    "notes": "<p>Robotics automation in manufacturing</p>"
+  }
+]

@@ -21,7 +21,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Middleware to parse JSON and URL-encoded bodies
-// Parse JSON bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -43,7 +42,7 @@ const startServer = async () => {
 
 startServer();
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`App is running on ${port}`);

@@ -2,6 +2,8 @@ import { Form } from "../models/Form";
 import { UsersModel } from "../models/Users";
 import { IForms } from "../types";
 import { generateCustomId } from "../utils/randomId";
+import path from "path";
+import fs from "fs";
 
 class formService {
   //create a form
@@ -92,6 +94,34 @@ class formService {
       return companyDetails?.userName;
     } catch (error) {
       console.log(error);
+    }
+  }
+  //post dunmmy form data
+  async postDummyForms() {
+    console.log("inserting....");
+    try {
+      // Load JSON file
+      const dataPath = path.join(__dirname, "../utils/forms.json");
+      const rawData = fs.readFileSync(dataPath, "utf-8");
+      const forms = JSON.parse(rawData);
+
+      // Add formID, company id to each
+      const formsWithId = forms.map((form: any) => ({
+        formID: generateCustomId(),
+        companyID: "mebgbc3vqfe4zfw18j",
+        ...form,
+      }));
+
+      // Insert many
+      const result = await Form.insertMany(formsWithId);
+      console.log("inserted !");
+      return {
+        success: true,
+        insertedCount: result.length,
+        data: result,
+      };
+    } catch (error) {
+      console.log("error in dummy data pushing to db...", error);
     }
   }
 }
