@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { JobSeekerServices } from "../services/jobSeeker";
-import { FormServices } from "../services/FormServices";
+import { Employerservices } from "../services/EmployerServices";
 
-class formController {
+class JobseekerController {
   //get all forms
   getAllForms = async (req: Request, res: Response) => {
     const request = {
@@ -11,6 +11,10 @@ class formController {
       size: Number(req.query?.size) > 0 ? Number(req.query?.size) : 10,
       search: req.query?.search ? String(req.query?.search).trim() : "",
       filters: {},
+      sortBy: req.query?.sortBy ? String(req.query?.sortBy).trim() : "",
+      sortOrder: req.query?.sortOrder
+        ? String(req.query?.sortOrder).trim()
+        : "",
     };
 
     if (req.userEmail) {
@@ -20,7 +24,7 @@ class formController {
   };
   //apply form
   applyForm = async (req: Request, res: Response) => {
-    const form = await FormServices.getForm(req.params.formID);
+    const form = await Employerservices.getForm(req.params.formID);
     if (form === "form not available")
       return res.status(404).send({ message: "Form not avilable !" });
     if (req.userEmail) {
@@ -32,7 +36,7 @@ class formController {
   };
   //check is applied
   isAppliedForm = async (req: Request, res: Response) => {
-    const form = await FormServices.getForm(req.params.formID);
+    const form = await Employerservices.getForm(req.params.formID);
     if (form === "form not available")
       return res.status(404).send({ message: "Form not avilable !" });
     if (req.userEmail) {
@@ -63,9 +67,19 @@ class formController {
 
   //get All Applied Form by user
   getAppliedForms = async (req: Request, res: Response) => {
+    const request = {
+      Email: String(req.userEmail || "").trim(),
+      page: Number(req.query?.page) > 0 ? Number(req.query?.page) : 1,
+      size: Number(req.query?.size) > 0 ? Number(req.query?.size) : 10,
+      search: req.query?.search ? String(req.query?.search).trim() : "",
+      filters: {},
+      sortBy: req.query?.sortBy ? String(req.query?.sortBy).trim() : "",
+      sortOrder: req.query?.sortOrder
+        ? String(req.query?.sortOrder).trim()
+        : "",
+    };
     if (req.userEmail) {
-      const userMail: string = req.userEmail;
-      const appliedForms = await JobSeekerServices.getAppliedForms(userMail);
+      const appliedForms = await JobSeekerServices.getAppliedForms(request);
       res.send(appliedForms);
     }
   };
@@ -80,4 +94,4 @@ class formController {
 }
 
 //export controller
-export const JobSeekerCtr = new formController();
+export const JobSeekerCtr = new JobseekerController();

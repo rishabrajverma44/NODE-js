@@ -39,4 +39,6 @@ export interface PaginationRequest {
   size: number;
   search: string;
   filters: { [key: string]: string };
+  sortBy?: string;
+  sortOrder?: string;
 }

@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import { formRoute } from "./router/formRouter";
+import { employerRoute } from "./router/employerRouter";
 import { userRouter } from "./router/userRouter";
 import authRoleBased from "./middlewares/authRoleBased";
 import { jobSeekerRoute } from "./router/jobSeeker";
@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //routes
 app.use("/user", userRouter);
-app.use("/company", authRoleBased("company"), formRoute);
+app.use("/company", authRoleBased("company"), employerRoute);
 app.use("/job_seeker", authRoleBased("job_seeker"), jobSeekerRoute);
 
 const startServer = async () => {
