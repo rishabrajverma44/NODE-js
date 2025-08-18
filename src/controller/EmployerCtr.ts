@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { FormValidation } from "../Validation/FormValidation";
-import { FormServices } from "../services/FormServices";
+import { Employerservices } from "../services/EmployerServices";
 
-class formController {
+class employerController {
   //Add form
   addForm = async (req: Request, res: Response) => {
     if (req.userEmail) {
@@ -12,7 +12,7 @@ class formController {
         console.log(error);
         res.send(error.message);
       } else if (value) {
-        const form = await FormServices.createForm(value, userMail);
+        const form = await Employerservices.createForm(value, userMail);
         res.status(201).send(form);
       }
     }
@@ -22,7 +22,7 @@ class formController {
   getForms = async (req: Request, res: Response) => {
     if (req.userEmail) {
       const userMail: string = req.userEmail;
-      const forms = await FormServices.getCompanyBasedForms(userMail);
+      const forms = await Employerservices.getCompanyBasedForms(userMail);
       res.send(forms);
     }
   };
@@ -31,7 +31,7 @@ class formController {
   getAForm = async (req: Request, res: Response) => {
     //get id from the parameter
     const id = req.params.id;
-    const form = await FormServices.getForm(id);
+    const form = await Employerservices.getForm(id);
     res.send(form);
   };
 
@@ -42,7 +42,7 @@ class formController {
     if (error) {
       res.send(error.message);
     } else if (value) {
-      const form = await FormServices.updateForm(id, value);
+      const form = await Employerservices.updateForm(id, value);
       res.send(req.body);
     }
   };
@@ -50,21 +50,30 @@ class formController {
   //delete a form
   deleteForm = async (req: Request, res: Response) => {
     const id = req.params.id;
-    await FormServices.deleteForm(id);
+    await Employerservices.deleteForm(id);
     res.send("form deleted");
   };
   //get company details
   getUserDetails = async (req: Request, res: Response) => {
     if (req.userEmail) {
       const userMail: string = req.userEmail;
-      const userName = await FormServices.getUserDetails(userMail);
+      const userName = await Employerservices.getUserDetails(userMail);
       res.send(userName);
+    }
+  };
+
+  //get applied forms
+  getAppliedForms = async (req: Request, res: Response) => {
+    if (req.userEmail) {
+      const userMail: string = req.userEmail;
+      const response = await Employerservices.formApplied(userMail);
+      res.send(response);
     }
   };
 
   //dummy form data insert many
   postDummydata = async (req: Request, res: Response) => {
-    const response = await FormServices.postDummyForms();
+    const response = await Employerservices.postDummyForms();
     res.send({
       success: response?.success,
       elementInserted: response?.insertedCount,
@@ -73,4 +82,4 @@ class formController {
 }
 
 //export controller
-export const FormCtr = new formController();
+export const employerContr = new employerController();

@@ -6,11 +6,8 @@ import { PaginationRequest } from "../types";
 class jobSeekerService {
   async getAllForm(reqest: PaginationRequest) {
     // get user id (job seeker) based on email
-    const Email = reqest.Email;
-    const search = reqest.search;
-    const filters = reqest.filters;
-    const page = reqest.page;
-    const size = reqest.size;
+    const { Email, search, filters, page, size, sortBy, sortOrder } = reqest;
+    //console.log(sortOrder);
     const userDetails = await UsersModel.findOne(
       { userEmail: Email },
       { userID: 1, _id: 0 }
@@ -18,7 +15,7 @@ class jobSeekerService {
 
     try {
       const matchStage: any = {};
-      //Search by text (role, company, location)
+
       if (search) {
         matchStage.$or = [
           { role: { $regex: search, $options: "i" } },
@@ -27,7 +24,6 @@ class jobSeekerService {
         ];
       }
 
-      //  Apply filters dynamically
       if (filters) {
         Object.keys(filters).forEach((key) => {
           matchStage[key] = filters[key];
@@ -36,10 +32,16 @@ class jobSeekerService {
 
       const skip = (page - 1) * size;
 
-      const allForms = await Form.aggregate([
-        // Apply search & filter conditions
-        { $match: matchStage },
+      // Determine sort object dynamically
+      const sortStage: any = {};
+      if (sortBy) {
+        sortStage[sortBy] = sortOrder === "asc" ? 1 : -1;
+      } else {
+        sortStage.updatedAt = -1;
+      }
 
+      const allForms = await Form.aggregate([
+        { $match: matchStage },
         {
           $lookup: {
             from: "appliedforms",
@@ -79,14 +81,11 @@ class jobSeekerService {
             updatedAt: 1,
           },
         },
-
-        { $sort: { updatedAt: -1 } },
-
-        // Pagination for infinite scroll
+        { $sort: sortStage },
         { $skip: skip },
         { $limit: size },
       ]);
-
+      // console.log(sortStage);
       const totalCount = await Form.countDocuments(matchStage);
 
       return {
@@ -113,7 +112,7 @@ class jobSeekerService {
       //get user id (job seeker) based on email
       const userDetails = await UsersModel.findOne(
         { userEmail: userEmail },
-        { userID: 1, _id: 0 }
+        { userID: 1, userName: 1, _id: 0 }
       );
 
       const checkForAppliedForm = (
@@ -138,6 +137,7 @@ class jobSeekerService {
           const data = {
             userID: userDetails?.userID,
             userEmail: userEmail,
+            userName: userDetails?.userName,
             formID: formID,
             companyID: companyDetails?.companyID,
           };
@@ -206,11 +206,27 @@ class jobSeekerService {
   }
 
   //get All Applied Form by user base on email id
-  async getAppliedForms(userMail: string) {
+  async getAppliedForms(request: PaginationRequest) {
     try {
+      const matchStage: any = {};
+      // console.log(request);
+
+      if (request.search) {
+        matchStage.$or = [
+          { role: { $regex: request.search, $options: "i" } },
+          { company: { $regex: request.search, $options: "i" } },
+          { location: { $regex: request.search, $options: "i" } },
+        ];
+      }
+      if (request.filters) {
+        Object.keys(request.filters).forEach((key) => {
+          matchStage[key] = request.filters[key];
+        });
+      }
+
       const appliedFormDetails = await AppliedForms.find(
         {
-          userEmail: userMail,
+          userEmail: request.Email,
         },
         {
           formID: 1,
@@ -218,14 +234,29 @@ class jobSeekerService {
         }
       );
       const formIDs = appliedFormDetails.map((form) => form.formID);
-
+      const skip = (request.page - 1) * request.size;
+      // Determine sort object dynamically
+      const sortStage: any = {};
+      if (request.sortBy) {
+        sortStage[request.sortBy] = request.sortOrder === "asc" ? 1 : -1;
+      } else {
+        sortStage.updatedAt = -1;
+      }
       const forms = await Form.find(
         { formID: { $in: formIDs } },
-        { _id: 0 },
-        { $sort: { updatedAt: -1 } }
+        { _id: 0, notes: 0 },
+        { $match: matchStage }
       );
 
-      return forms;
+      const totalCount = await AppliedForms.countDocuments(matchStage);
+
+      return {
+        data: forms,
+        page: request.page,
+        size: request.size,
+        total: forms.length,
+        hasMore: skip + request.size < forms.length,
+      };
     } catch (error) {
       console.log(error);
     }

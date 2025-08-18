@@ -4,8 +4,9 @@ import { IForms } from "../types";
 import { generateCustomId } from "../utils/randomId";
 import path from "path";
 import fs from "fs";
+import { AppliedForms } from "../models/AppliedForms";
 
-class formService {
+class employerservices {
   //create a form
   async createForm(data: IForms, userMail: string) {
     try {
@@ -96,6 +97,29 @@ class formService {
       console.log(error);
     }
   }
+
+  //get applied forms
+  async formApplied(userMail: string) {
+    try {
+      const getReceivedForms = await AppliedForms.aggregate([
+        {
+          $lookup: {
+            from: "users",
+            localField: "userEmail",
+            foreignField: "userEmail",
+            as: "appliedFormDetails",
+          },
+        },
+      ]);
+      //  console.log(getReceivedForms, userMail);
+      const appliedForms = getReceivedForms.map((form) => {
+        if (form.appliedFormDetails.length > 0) return form.appliedFormDetails;
+      });
+      return appliedForms;
+    } catch (error) {
+      console.log(error);
+    }
+  }
   //post dunmmy form data
   async postDummyForms() {
     console.log("inserting....");
@@ -126,4 +150,4 @@ class formService {
   }
 }
 
-export const FormServices = new formService();
+export const Employerservices = new employerservices();
