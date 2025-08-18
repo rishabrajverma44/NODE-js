@@ -76,18 +76,17 @@ class jobSeekerService {
             status: 1,
             notes: 1,
             applied: 1,
+            updatedAt: 1,
           },
         },
 
-        //  Sort newest first
-        { $sort: { date: -1 } },
+        { $sort: { updatedAt: -1 } },
 
         // Pagination for infinite scroll
         { $skip: skip },
         { $limit: size },
       ]);
 
-      // Get total count for frontend (optional)
       const totalCount = await Form.countDocuments(matchStage);
 
       return {
@@ -220,7 +219,11 @@ class jobSeekerService {
       );
       const formIDs = appliedFormDetails.map((form) => form.formID);
 
-      const forms = await Form.find({ formID: { $in: formIDs } }, { _id: 0 });
+      const forms = await Form.find(
+        { formID: { $in: formIDs } },
+        { _id: 0 },
+        { $sort: { updatedAt: -1 } }
+      );
 
       return forms;
     } catch (error) {

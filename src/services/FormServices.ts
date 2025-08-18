@@ -35,7 +35,7 @@ class formService {
       const allForms = await Form.find(
         { companyID: companyID?.userID },
         { _id: 0, companyID: 0, createdAt: 0, updatedAt: 0, __v: 0 }
-      );
+      ).sort({ updatedAt: -1 });
       return allForms;
     } catch (error) {
       console.log(error);
