@@ -4,9 +4,17 @@ import { FormServices } from "../services/FormServices";
 
 class formController {
   //get all forms
-  getForms = async (req: Request, res: Response) => {
+  getAllForms = async (req: Request, res: Response) => {
+    const request = {
+      Email: String(req.userEmail || "").trim(),
+      page: Number(req.query?.page) > 0 ? Number(req.query?.page) : 1,
+      size: Number(req.query?.size) > 0 ? Number(req.query?.size) : 10,
+      search: req.query?.search ? String(req.query?.search).trim() : "",
+      filters: {},
+    };
+
     if (req.userEmail) {
-      const forms = await JobSeekerServices.getAllForm(req.userEmail);
+      const forms = await JobSeekerServices.getAllForm(request);
       res.send(forms);
     }
   };
@@ -22,6 +30,18 @@ class formController {
       res.send(forms);
     } else res.status(404).send({ message: "Email not found !" });
   };
+  //check is applied
+  isAppliedForm = async (req: Request, res: Response) => {
+    const form = await FormServices.getForm(req.params.formID);
+    if (form === "form not available")
+      return res.status(404).send({ message: "Form not avilable !" });
+    if (req.userEmail) {
+      const userMail: string = req.userEmail;
+      const formID: string = req.params.formID;
+      const result = await JobSeekerServices.isAppliedCkeck(userMail, formID);
+      res.send(result);
+    } else res.status(404).send({ message: "Email not found !" });
+  };
   //get user details
   getUserDetails = async (req: Request, res: Response) => {
     if (req.userEmail) {
@@ -30,13 +50,22 @@ class formController {
       res.send(userName);
     }
   };
-  //get applied form details
+  //get getNumbers Of Form Applied by user
   getAppliedFormNumbers = async (req: Request, res: Response) => {
     if (req.userEmail) {
       const userMail: string = req.userEmail;
-      const appliedForms = await JobSeekerServices.getAppliedFormNumbers(
+      const appliedForms = await JobSeekerServices.getNumbersOfFormApplied(
         userMail
       );
+      res.send(appliedForms);
+    }
+  };
+
+  //get All Applied Form by user
+  getAppliedForms = async (req: Request, res: Response) => {
+    if (req.userEmail) {
+      const userMail: string = req.userEmail;
+      const appliedForms = await JobSeekerServices.getAppliedForms(userMail);
       res.send(appliedForms);
     }
   };
