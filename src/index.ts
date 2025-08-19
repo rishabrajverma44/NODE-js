@@ -14,8 +14,9 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-  origin: "*",
+  origin: ["https://react-ts-orcin.vercel.app/"],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
   optionsSuccessStatus: 200,
   exposedHeaders: ["Authorization"],
 };
