@@ -10,6 +10,7 @@ employerRoute.put("/:id", employerContr.updateForm);
 employerRoute.delete("/:id", employerContr.deleteForm);
 employerRoute.get("/user/userDetails", employerContr.getUserDetails);
 employerRoute.get("/user/appliedForms", employerContr.getAppliedForms);
+employerRoute.get("/user/getchart", employerContr.getForms);
 
 //dummy data insert
 employerRoute.post("/dummy", employerContr.postDummydata);

@@ -27,6 +27,15 @@ class employerController {
     }
   };
 
+  //get chart data
+  getChart = async (req: Request, res: Response) => {
+    if (req.userEmail) {
+      const userMail: string = req.userEmail;
+      const getChart = await Employerservices.getChartData(userMail);
+      res.send(getChart);
+    }
+  };
+
   //get a single form
   getAForm = async (req: Request, res: Response) => {
     //get id from the parameter

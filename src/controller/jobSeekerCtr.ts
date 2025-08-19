@@ -91,6 +91,16 @@ class JobseekerController {
       res.send(formDetails);
     }
   };
+  //get All Applied Form by user
+  getAppliedFormsChartData = async (req: Request, res: Response) => {
+    if (req.userEmail) {
+      const userMail: string = req.userEmail;
+      const chartData = await JobSeekerServices.getAppliedFormsChartData(
+        userMail
+      );
+      res.send(chartData);
+    }
+  };
 }
 
 //export controller

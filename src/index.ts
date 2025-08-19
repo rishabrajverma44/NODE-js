@@ -7,6 +7,9 @@ import { jobSeekerRoute } from "./router/jobSeeker";
 import connectDB from "./config/connectDB.config";
 import cors from "cors";
 
+const envFile =
+  process.env.NODE_ENV === "production" ? ".env.production" : ".env.dev";
+dotenv.config({ path: envFile });
 dotenv.config();
 const app = express();
 
@@ -43,7 +46,7 @@ const startServer = async () => {
 startServer();
 
 const port = process.env.PORT || 3000;
-
+const env = process.env.NODE_ENV;
 app.listen(port, () => {
-  console.log(`App is running on ${port}`);
+  console.log(`${env} : App is running on ${port}`);
 });

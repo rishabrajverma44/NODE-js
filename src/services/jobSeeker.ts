@@ -286,6 +286,31 @@ class jobSeekerService {
       console.log(error);
     }
   }
+
+  //get All Applied Form  data by user base on email id
+  async getAppliedFormsChartData(userMail: string) {
+    try {
+      const appliedFormDetails = await AppliedForms.find(
+        {
+          userEmail: userMail,
+        },
+        {
+          formID: 1,
+          _id: 0,
+        }
+      );
+      const formIDs = appliedFormDetails.map((form) => form.formID);
+
+      const forms = await Form.find(
+        { formID: { $in: formIDs } },
+        { _id: 0, notes: 0 }
+      );
+
+      return forms;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 export const JobSeekerServices = new jobSeekerService();

@@ -9,3 +9,4 @@ jobSeekerRoute.post("/applied/:formID", JobSeekerCtr.isAppliedForm);
 jobSeekerRoute.get("/useDetails", JobSeekerCtr.getUserDetails);
 jobSeekerRoute.get("/numbersOfFormApplied", JobSeekerCtr.getAppliedFormNumbers);
 jobSeekerRoute.get("/appliedForms", JobSeekerCtr.getAppliedForms);
+jobSeekerRoute.get("/getChart", JobSeekerCtr.getAppliedFormsChartData);
