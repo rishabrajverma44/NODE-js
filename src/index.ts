@@ -12,9 +12,9 @@ const envFile =
 dotenv.config({ path: envFile });
 dotenv.config();
 const app = express();
-
+const frontend_url: string = process.env.FRONTEND_URL || "http://localhost";
 const corsOptions = {
-  origin: ["https://react-ts-orcin.vercel.app/"],
+  origin: [frontend_url],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 200,
