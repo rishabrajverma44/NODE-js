@@ -12,7 +12,8 @@ const envFile =
 dotenv.config({ path: envFile });
 dotenv.config();
 const app = express();
-const frontend_url: string = process.env.FRONTEND_URL || "http://localhost";
+const frontend_url: string =
+  process.env.FRONTEND_URL || "http://localhost:5173";
 const corsOptions = {
   origin: [frontend_url],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
